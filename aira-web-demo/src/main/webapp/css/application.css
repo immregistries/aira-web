@@ -1,0 +1,31 @@
+/*
+ * Demo-only extension loaded after the shared AIRA theme.
+ */
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+  gap: var(--aira-space-6);
+  align-items: start;
+}
+
+.demo-stack {
+  display: grid;
+  gap: var(--aira-space-4);
+}
+
+.demo-page-actions {
+  margin-bottom: var(--aira-space-6);
+}
+
+.demo-stat {
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--aira-primary-action);
+}
+
+@media (max-width: 56rem) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+}

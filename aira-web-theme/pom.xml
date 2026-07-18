@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.immregistries</groupId>
+    <artifactId>aira-web</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>aira-web-theme</artifactId>
+  <packaging>jar</packaging>
+
+  <name>AIRA Web Theme</name>
+  <description>Shared AIRA web resources exposed through META-INF/resources.</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>verify-theme-resource-in-jar</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <fail message="Theme JAR is missing META-INF/resources/aira/css/aira.css">
+                  <condition>
+                    <not>
+                      <resourceexists>
+                        <zipentry zipfile="${project.build.directory}/${project.build.finalName}.jar"
+                                  name="META-INF/resources/aira/css/aira.css"/>
+                      </resourceexists>
+                    </not>
+                  </condition>
+                </fail>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+

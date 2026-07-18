@@ -1,0 +1,193 @@
+/*
+ * AIRA Web Theme Starter
+ * Companion to AIRA Web Application Brand and Interface Standards
+ * Draft 1.0 - July 2026
+ */
+
+:root {
+  /* Core AIRA palette */
+  --aira-navy: #1c3c50;
+  --aira-green: #629f44;
+  --aira-light-green: #c9e1c9;
+  --aira-blue-gray: #8098a4;
+  --aira-light-gray: #cccccb;
+  --aira-dark-gray: #6f6e73;
+  --aira-yellow: #ecbc0a;
+  --aira-off-white: #f2f2f2;
+  --aira-white: #ffffff;
+
+  /* Functional web colors */
+  --aira-green-accessible: #3f732b;
+  --aira-focus: #005ea8;
+  --aira-success: #0b6b3a;
+  --aira-warning-text: #6b4e00;
+  --aira-danger: #b42318;
+  --aira-navy-hover: #132d3d;
+  --aira-info-surface: #eaf4fb;
+  --aira-success-surface: #eaf6ef;
+  --aira-warning-surface: #fff4cc;
+  --aira-error-surface: #fdecea;
+  --aira-row-hover: #eff6ec;
+
+  /* Typography */
+  --aira-font-sans: "Open Sans", Arial, sans-serif;
+  --aira-font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* Spacing */
+  --aira-space-1: 0.25rem;
+  --aira-space-2: 0.5rem;
+  --aira-space-3: 0.75rem;
+  --aira-space-4: 1rem;
+  --aira-space-6: 1.5rem;
+  --aira-space-8: 2rem;
+  --aira-space-12: 3rem;
+  --aira-space-16: 4rem;
+
+  /* Shape and shell */
+  --aira-radius-control: 0.25rem;
+  --aira-radius-panel: 0.375rem;
+  --aira-header-height: 4rem;
+  --aira-nav-height: 2.875rem;
+  --aira-sidebar-width: 15rem;
+  --aira-sidebar-collapsed: 4.5rem;
+  --aira-page-max: 100rem;
+  --aira-reading-max: 72ch;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-family: var(--aira-font-sans); color: var(--aira-navy); background: var(--aira-off-white); }
+body { margin: 0; min-height: 100vh; font-size: 1rem; line-height: 1.5; background: var(--aira-off-white); }
+
+.skip-link {
+  position: fixed;
+  left: var(--aira-space-4);
+  top: var(--aira-space-4);
+  z-index: 10000;
+  transform: translateY(-200%);
+  padding: var(--aira-space-2) var(--aira-space-4);
+  background: var(--aira-white);
+  color: var(--aira-navy);
+  border: 2px solid var(--aira-focus);
+}
+.skip-link:focus { transform: translateY(0); }
+
+:focus-visible { outline: 2px solid var(--aira-focus); outline-offset: 2px; }
+
+.aira-app { min-height: 100vh; display: flex; flex-direction: column; }
+
+.aira-header {
+  min-height: var(--aira-header-height);
+  display: flex;
+  align-items: center;
+  gap: var(--aira-space-4);
+  padding: 0 var(--aira-space-6);
+  background: var(--aira-white);
+  border-top: 4px solid var(--aira-green);
+  border-bottom: 1px solid var(--aira-light-gray);
+}
+
+.aira-logo { display: block; width: auto; max-height: 2rem; }
+.aira-app-name { padding-left: var(--aira-space-4); border-left: 1px solid var(--aira-light-gray); font-size: 1.125rem; font-weight: 600; }
+.aira-header-actions { margin-left: auto; display: flex; align-items: center; gap: var(--aira-space-3); }
+
+.aira-primary-nav { min-height: var(--aira-nav-height); display: flex; align-items: stretch; background: var(--aira-navy); }
+.aira-primary-nav a { display: inline-flex; align-items: center; padding: 0 var(--aira-space-4); color: var(--aira-white); text-decoration: none; border-bottom: 3px solid transparent; }
+.aira-primary-nav a:hover { background: var(--aira-navy-hover); }
+.aira-primary-nav a[aria-current="page"] { border-bottom-color: var(--aira-green); }
+
+.aira-main { width: 100%; max-width: var(--aira-page-max); margin: 0 auto; padding: var(--aira-space-6); flex: 1 0 auto; }
+.aira-reading { max-width: var(--aira-reading-max); }
+
+.aira-page-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--aira-space-4); margin-bottom: var(--aira-space-6); }
+.aira-page-header h1 { margin: 0; font-size: 1.75rem; line-height: 1.2; font-weight: 400; color: var(--aira-navy); }
+.aira-page-actions { display: flex; flex-wrap: wrap; gap: var(--aira-space-2); }
+
+h2 { font-size: 1.375rem; line-height: 1.25; font-weight: 600; }
+h3 { font-size: 1.125rem; line-height: 1.35; font-weight: 600; }
+small, .aira-meta { font-size: 0.8125rem; color: var(--aira-dark-gray); }
+code, pre { font-family: var(--aira-font-mono); }
+
+a { color: var(--aira-navy); text-decoration: underline; text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+
+.aira-button,
+a.aira-button {
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aira-space-2);
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--aira-radius-control);
+  font: 600 0.875rem/1.2 var(--aira-font-sans);
+  cursor: pointer;
+  text-decoration: none;
+}
+.aira-button--primary,
+a.aira-button--primary { color: var(--aira-white); background: var(--aira-navy); }
+.aira-button--primary:hover,
+a.aira-button--primary:hover { background: var(--aira-navy-hover); }
+.aira-button--secondary,
+a.aira-button--secondary { color: var(--aira-navy); background: var(--aira-white); border-color: var(--aira-navy); }
+.aira-button--secondary:hover,
+a.aira-button--secondary:hover { background: var(--aira-off-white); }
+.aira-button--success,
+a.aira-button--success { color: var(--aira-white); background: var(--aira-green-accessible); }
+.aira-button--danger,
+a.aira-button--danger { color: var(--aira-white); background: var(--aira-danger); }
+.aira-button:disabled { cursor: not-allowed; opacity: 0.6; }
+
+.aira-panel { padding: var(--aira-space-4); background: var(--aira-white); border: 1px solid var(--aira-light-gray); border-radius: var(--aira-radius-panel); }
+
+.aira-field { margin-bottom: var(--aira-space-4); }
+.aira-field label { display: block; margin-bottom: var(--aira-space-1); font-size: 0.875rem; font-weight: 600; color: var(--aira-navy); }
+.aira-input, .aira-select, .aira-textarea {
+  width: 100%; min-height: 2.5rem; padding: 0.5rem 0.75rem;
+  border: 1px solid var(--aira-blue-gray); border-radius: var(--aira-radius-control);
+  background: var(--aira-white); color: var(--aira-navy); font: 400 1rem/1.4 var(--aira-font-sans);
+}
+.aira-input[aria-invalid="true"], .aira-select[aria-invalid="true"], .aira-textarea[aria-invalid="true"] { border-color: var(--aira-danger); }
+.aira-field-help { margin-top: var(--aira-space-1); font-size: 0.8125rem; color: var(--aira-dark-gray); }
+.aira-field-error { margin-top: var(--aira-space-1); font-size: 0.875rem; color: var(--aira-danger); font-weight: 600; }
+
+.aira-table-wrap { width: 100%; overflow-x: auto; }
+.aira-table { width: 100%; border-collapse: collapse; background: var(--aira-white); font-size: 0.875rem; }
+.aira-table th { padding: 0.75rem 1rem; text-align: left; background: var(--aira-navy); color: var(--aira-white); font-weight: 600; }
+.aira-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--aira-light-gray); }
+.aira-table tbody tr:nth-child(even) { background: var(--aira-off-white); }
+.aira-table tbody tr:hover { background: var(--aira-row-hover); }
+.aira-table tbody tr[aria-selected="true"] { background: var(--aira-light-green); color: var(--aira-navy); }
+.aira-density-compact .aira-table th, .aira-density-compact .aira-table td { padding: 0.5rem 0.75rem; }
+
+.aira-alert { padding: var(--aira-space-4); border-left: 4px solid; border-radius: var(--aira-radius-control); }
+.aira-alert--info { background: var(--aira-info-surface); border-color: var(--aira-focus); }
+.aira-alert--success { background: var(--aira-success-surface); border-color: var(--aira-success); }
+.aira-alert--warning { background: var(--aira-warning-surface); border-color: var(--aira-yellow); color: var(--aira-warning-text); }
+.aira-alert--error { background: var(--aira-error-surface); border-color: var(--aira-danger); }
+
+.aira-footer {
+  flex: 0 0 auto;
+  padding: 0.75rem 1.5rem;
+  border-top: 4px solid var(--aira-green);
+  background: var(--aira-navy);
+  color: var(--aira-white);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+.aira-footer p { margin: 0; }
+.aira-footer p + p { margin-top: 0.25rem; }
+.aira-footer a { color: var(--aira-white); text-decoration: underline; text-underline-offset: 0.15em; }
+
+@media (max-width: 48rem) {
+  .aira-header { padding-inline: var(--aira-space-4); }
+  .aira-main { padding: var(--aira-space-4); }
+  .aira-page-header { flex-direction: column; }
+  .aira-page-actions { width: 100%; }
+  .aira-footer { padding-inline: var(--aira-space-4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
