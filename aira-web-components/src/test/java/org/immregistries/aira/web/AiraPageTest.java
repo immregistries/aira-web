@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class AiraPageTest {
@@ -28,7 +29,7 @@ class AiraPageTest {
     String html = render(pageBuilder()
         .contextPath("")
         .addLocalStylesheet("/css/application.css")
-        .addNavigationItem("Home", "/", true)
+        .context("Workspace", List.of(new AiraNavigationItem("Home", "/", true)))
         .build());
 
     assertTrue(html.contains("href=\"/aira/css/aira.css\""));
@@ -41,7 +42,7 @@ class AiraPageTest {
     String html = render(pageBuilder()
         .contextPath("/aira-web-demo")
         .addLocalStylesheet("/css/application.css")
-        .addNavigationItem("Home", "/", true)
+        .context("Workspace", List.of(new AiraNavigationItem("Home", "/", true)))
         .build());
 
     assertTrue(html.contains("href=\"/aira-web-demo/aira/css/aira.css\""));
@@ -50,21 +51,53 @@ class AiraPageTest {
   }
 
   @Test
-  void activeNavigationReceivesAriaCurrent() {
+  void contextNavigationReceivesAriaCurrent() {
     String html = render(pageBuilder()
-        .addNavigationItem("Home", "/", true)
-        .addNavigationItem("Docs", "/docs", false)
+        .context("Emerging Standards", List.of(
+            new AiraNavigationItem("Home", "/", true),
+            new AiraNavigationItem("Topics", "/topics", false)))
         .build());
 
+    assertTrue(html.contains("<section class=\"aira-context-header\""));
+    assertTrue(html.contains("Emerging Standards"));
     assertTrue(html.contains("href=\"/\" aria-current=\"page\">Home</a>"));
-    assertTrue(html.contains("href=\"/docs\">Docs</a>"));
+    assertTrue(html.contains("href=\"/topics\">Topics</a>"));
   }
 
   @Test
-  void navigationIsOmittedWhenNoItemsAreSupplied() {
+  void contextIsOmittedWhenNoContextIsSupplied() {
     String html = render(pageBuilder().build());
 
-    assertFalse(html.contains("<nav class=\"aira-primary-nav\""));
+    assertFalse(html.contains("aira-context-header"));
+    assertFalse(html.contains("aira-context-nav"));
+  }
+
+  @Test
+  void optionalHeaderControlsRenderWhenConfigured() {
+    String html = render(pageBuilder()
+        .addGlobalAction("Explore", "/explore", "secondary")
+        .search(new AiraSearchConfig("/search", "q", "Search InteropHub", "Search topics"))
+        .account(new AiraAccountConfig("Nathan", "Sign out", "/logout"))
+        .environment(new AiraEnvironmentConfig("Local", "Local development environment"))
+        .build());
+
+    assertTrue(html.contains("class=\"aira-global-search\""));
+    assertTrue(html.contains("name=\"q\""));
+    assertTrue(html.contains("placeholder=\"Search topics\""));
+    assertTrue(html.contains("class=\"aira-button aira-button--secondary\" href=\"/explore\""));
+    assertTrue(html.contains("class=\"aira-account-label\">Nathan</span>"));
+    assertTrue(html.contains("href=\"/logout\">Sign out</a>"));
+    assertTrue(html.contains("class=\"aira-environment-badge\" title=\"Local development environment\">Local</span>"));
+  }
+
+  @Test
+  void optionalHeaderControlsAreOmittedByDefault() {
+    String html = render(pageBuilder().build());
+
+    assertFalse(html.contains("aira-global-search"));
+    assertFalse(html.contains("aira-global-actions"));
+    assertFalse(html.contains("aira-account-area"));
+    assertFalse(html.contains("aira-environment-badge"));
   }
 
   @Test
@@ -109,25 +142,32 @@ class AiraPageTest {
         .applicationName("Demo <Tool>")
         .pageHeading("Heading & More")
         .pageIntro("Intro \"quoted\"")
+        .context("Context <One>", List.of(new AiraNavigationItem("A&B", "/a", true)))
         .build());
 
     assertTrue(html.contains("Demo &lt;Tool&gt;"));
     assertTrue(html.contains("Heading &amp; More"));
     assertTrue(html.contains("Intro &quot;quoted&quot;"));
+    assertTrue(html.contains("Context &lt;One&gt;"));
+    assertTrue(html.contains(">A&amp;B</a>"));
   }
 
   @Test
   void attributeValuesAreHtmlEscaped() {
     String html = render(pageBuilder()
         .addLocalStylesheet("/css/app\"bad.css")
-        .addNavigationItem("Docs", "/docs?x=\"<", true)
+        .context("Docs", List.of(new AiraNavigationItem("Docs", "/docs?x=\"<", true)))
         .logo(new AiraLogo("/images/logo\".svg", "AIRA \"Logo\""))
+        .search(new AiraSearchConfig("/search?x=\"", "q\"bad", "Search", "quoted \" text"))
         .build());
 
     assertTrue(html.contains("href=\"/css/app&quot;bad.css\""));
     assertTrue(html.contains("href=\"/docs?x=&quot;&lt;\""));
     assertTrue(html.contains("src=\"/images/logo&quot;.svg\""));
     assertTrue(html.contains("alt=\"AIRA &quot;Logo&quot;\""));
+    assertTrue(html.contains("action=\"/search?x=&quot;\""));
+    assertTrue(html.contains("name=\"q&quot;bad\""));
+    assertTrue(html.contains("placeholder=\"quoted &quot; text\""));
   }
 
   @Test
@@ -137,12 +177,14 @@ class AiraPageTest {
         .pageHeading(" ")
         .pageIntro(" ")
         .identityHref(" ")
+        .account(new AiraAccountConfig(" ", "Sign in", "/login"))
         .build());
 
     assertFalse(html.contains("aira-app-subtitle"));
     assertFalse(html.contains("<h1 class=\"aira-page-title\">"));
     assertFalse(html.contains("<p class=\"aira-page-intro\">"));
     assertFalse(html.contains("aira-identity-link"));
+    assertFalse(html.contains("aira-account-label"));
   }
 
   @Test
@@ -151,6 +193,8 @@ class AiraPageTest {
     assertThrows(IllegalArgumentException.class, () -> pageBuilder().applicationVersion(null).build());
     assertThrows(IllegalArgumentException.class, () -> pageBuilder().documentTitle("").build());
     assertThrows(IllegalArgumentException.class, () -> new AiraNavigationItem("", "/", false));
+    assertThrows(IllegalArgumentException.class, () -> new AiraSearchConfig("", "q", "Search", ""));
+    assertThrows(IllegalArgumentException.class, () -> new AiraActionItem("Bad", "/", "bad class"));
   }
 
   @Test
@@ -191,4 +235,3 @@ class AiraPageTest {
     return count;
   }
 }
-

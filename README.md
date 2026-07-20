@@ -1,16 +1,16 @@
 # AIRA Web
 
-Reusable AIRA web application resources for Java Servlet applications that generate HTML directly from Java. This repository provides shared CSS, static web resources, and plain Java renderers for the common AIRA application shell.
+Reusable AIRA web application resources for Java Servlet applications that generate HTML directly from Java.
 
-Applications should consume a versioned Maven dependency. They should not load an unversioned stylesheet directly from a central production URL.
+This repository provides a first usable shared design-system release for AIRA applications: a versioned CSS theme, small Java renderers for the common application shell, and a servlet-only demo application that consumes the same artifacts downstream applications will consume.
 
 ## Modules
 
-- `aira-web-theme` - JAR containing shared static web resources under `META-INF/resources/aira/`.
-- `aira-web-components` - plain Java JAR for rendering the document head, stylesheet links, header, navigation, main container, and required footer.
-- `aira-web-demo` - WAR demonstrating a servlet-only application that consumes `aira-web-components` and generates page-specific content itself.
-- `docs/` - branding standards, adoption guidance, and component usage guidance.
-- `temp/` - reference material used to seed this repository. The files are intentionally left unchanged during this stage.
+- `aira-web-theme` - JAR containing shared static resources under `META-INF/resources/aira/`, including `META-INF/resources/aira/css/aira.css`.
+- `aira-web-components` - plain Java JAR for rendering the document head, shared stylesheet links, global header, optional contextual header/navigation, main content opening, and required footer.
+- `aira-web-demo` - WAR demonstrating a servlet-only application that consumes `aira-web-components`; it does not copy the shared theme CSS.
+- `docs/` - standards, adoption guidance, and component usage guidance.
+- `temp/` - reference and analysis material. These files are not part of the published API.
 
 ## Build
 
@@ -28,53 +28,66 @@ Run the demo locally with Jetty:
 mvn -pl aira-web-demo -am package jetty:run
 ```
 
-Then open:
+Then inspect:
 
 ```text
 http://localhost:8080/aira-web-demo/
+http://localhost:8080/aira-web-demo/management
+http://localhost:8080/aira-web-demo/components
 ```
 
-If port 8080 is already in use, add a port override:
-
-```bash
-mvn -pl aira-web-demo -am package jetty:run -Djetty.http.port=18080
-```
-
-In PowerShell, quote the property:
+If port 8080 is already in use:
 
 ```powershell
 mvn -pl aira-web-demo -am package jetty:run "-Djetty.http.port=18080"
 ```
 
-The demo loads the shared stylesheet first:
+## Consuming AIRA Web
+
+Applications that only need CSS can depend on `aira-web-theme`. Applications that want the generated shell should depend on `aira-web-components`, which brings in the theme transitively.
+
+The shared stylesheet is served by the servlet container from the dependency JAR:
 
 ```html
 <link rel="stylesheet" href="{contextPath}/aira/css/aira.css">
 ```
 
-Then it loads application CSS:
+Application CSS may be loaded afterward for domain-specific composition:
 
 ```html
 <link rel="stylesheet" href="{contextPath}/css/application.css">
 ```
 
-This order lets applications use the shared theme as the baseline and add small local extensions without duplicating the shared theme.
+Application CSS should not redefine AIRA brand tokens, the base shell, footer, form controls, primary buttons, or shared component classes.
 
-## Current Status
+## First-Release Component Categories
 
-This project currently includes:
+The shared CSS includes:
 
-- A multi-module Maven build.
-- A resource JAR that exposes `META-INF/resources/aira/css/aira.css`.
-- A reusable Java component JAR for the AIRA application shell.
-- A servlet-only demo WAR.
-- JUnit coverage for the reusable renderer behavior.
-- A minimal CI workflow for Java 17.
+- Two-level shell: global header, identity, search, actions, account area, environment badge, contextual title/navigation.
+- Layout primitives: standard/narrow/wide containers, stacks, clusters, responsive grids, card grids, sidebar layouts, split layouts, toolbars, reading width.
+- Buttons and action areas: primary, secondary, success, danger, ghost, link, small, icon-compatible, grouped, responsive, and sticky actions.
+- Forms: form containers, field rows, fieldsets, native checkboxes/radios, search fields, switches, segmented/rating/chip controls, inline forms, action areas, help, errors, and error summaries.
+- Badges, tags, status text, and status dots.
+- Panels, cards, interactive cards, choice rows, resource-card structure, and empty states.
+- Event lists for meetings, workshops, webinars, and other dated events.
+- Tables with overflow wrappers and compact density.
+- Alerts, management layout helpers, footer, and small utilities.
 
-Applications may consume `aira-web-theme` alone when they only need CSS and assets. Applications that also want the standardized HTML application shell should consume `aira-web-components`, which brings in the theme transitively.
+The Java component layer intentionally remains small. It renders the shared shell and leaves page-specific content to the servlet.
+
+## Application-Specific Behavior
+
+AIRA Web does not provide JavaScript behavior, menus, dialogs, bottom sheets, drag-and-drop boards, data grids, authentication/session handling, or domain-specific workflows. Applications remain responsible for:
+
+- Business rules and page-specific HTML.
+- Form processing and validation.
+- Any required JavaScript interactions.
+- Domain-specific CSS that composes shared primitives.
+- Approved logo asset selection and packaging.
 
 ## Known Missing Items
 
-- Approved AIRA logo assets are not present in this repository. The theme JAR includes `images`, `icons`, and `fonts` directories ready for approved assets, but no logo has been fabricated or approximated.
+- Approved AIRA logo assets are not present in this repository. The demo uses the text logo placeholder emitted by the component library.
 - Local Open Sans font packaging is not implemented yet. The CSS uses `"Open Sans", Arial, sans-serif` without a runtime network dependency.
-- Shared renderers currently cover the page shell only. Buttons, forms, tables, dialogs, and other component renderers remain application-generated for now.
+- Dialogs, bottom sheets, menus, and shared JavaScript behavior are intentionally deferred.

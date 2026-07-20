@@ -3,6 +3,7 @@
  * Shared servlet resources packaged under META-INF/resources.
  */
 
+/* 1. Tokens */
 :root {
   --aira-navy: #1c3c50;
   --aira-green: #629f44;
@@ -20,21 +21,32 @@
   --aira-warning-text: #6b4e00;
   --aira-danger: #b42318;
   --aira-navy-hover: #132d3d;
+  --aira-info: #005ea8;
+
+  --aira-text: var(--aira-navy);
+  --aira-text-secondary: var(--aira-dark-gray);
+  --aira-text-muted: #58646c;
+  --aira-text-disabled: #7b858c;
+  --aira-background: var(--aira-off-white);
+  --aira-surface: var(--aira-white);
+  --aira-surface-muted: #f8fafb;
+  --aira-surface-elevated: var(--aira-white);
+  --aira-surface-selected: #eef7ec;
+  --aira-surface-disabled: #edf0f2;
+  --aira-overlay: rgba(28, 60, 80, 0.48);
+  --aira-border: var(--aira-light-gray);
+  --aira-border-subtle: #e4e7e8;
+  --aira-border-strong: var(--aira-blue-gray);
+  --aira-link: var(--aira-navy);
+  --aira-primary-action: var(--aira-navy);
+  --aira-primary-action-hover: var(--aira-navy-hover);
+  --aira-focus-ring: var(--aira-focus);
+
   --aira-info-surface: #eaf4fb;
   --aira-success-surface: #eaf6ef;
   --aira-warning-surface: #fff4cc;
   --aira-error-surface: #fdecea;
   --aira-row-hover: #eff6ec;
-
-  --aira-text: var(--aira-navy);
-  --aira-text-secondary: var(--aira-dark-gray);
-  --aira-background: var(--aira-off-white);
-  --aira-surface: var(--aira-white);
-  --aira-border: var(--aira-light-gray);
-  --aira-link: var(--aira-navy);
-  --aira-primary-action: var(--aira-navy);
-  --aira-primary-action-hover: var(--aira-navy-hover);
-  --aira-focus-ring: var(--aira-focus);
 
   --aira-font-sans: "Open Sans", Arial, sans-serif;
   --aira-font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -43,21 +55,41 @@
   --aira-space-2: 0.5rem;
   --aira-space-3: 0.75rem;
   --aira-space-4: 1rem;
+  --aira-space-5: 1.25rem;
   --aira-space-6: 1.5rem;
   --aira-space-8: 2rem;
+  --aira-space-10: 2.5rem;
   --aira-space-12: 3rem;
   --aira-space-16: 4rem;
 
+  --aira-radius-xs: 0.1875rem;
   --aira-radius-control: 0.25rem;
   --aira-radius-panel: 0.375rem;
-  --aira-header-height: 4rem;
-  --aira-nav-height: 2.875rem;
-  --aira-sidebar-width: 15rem;
-  --aira-sidebar-collapsed: 4.5rem;
-  --aira-page-max: 100rem;
+  --aira-radius-card: 0.5rem;
+  --aira-radius-pill: 999px;
+
+  --aira-shadow-card: 0 1px 4px rgba(28, 60, 80, 0.10);
+  --aira-shadow-elevated: 0 8px 24px rgba(28, 60, 80, 0.16);
+  --aira-shadow-dialog: 0 20px 48px rgba(28, 60, 80, 0.24);
+
+  --aira-control-height: 2.5rem;
+  --aira-control-height-small: 2rem;
+  --aira-touch-target: 2.5rem;
+  --aira-header-min-height: 4rem;
+  --aira-context-nav-height: 2.75rem;
+  --aira-sidebar-width: 17rem;
+  --aira-page-narrow: 48rem;
+  --aira-page-standard: 72rem;
+  --aira-page-wide: 100rem;
   --aira-reading-max: 72ch;
+
+  --aira-z-header: 100;
+  --aira-z-sticky: 200;
+  --aira-z-overlay: 400;
+  --aira-z-skip-link: 10000;
 }
 
+/* 2. Reset and Base */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -76,16 +108,26 @@ body {
   background: var(--aira-background);
 }
 
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
 :focus-visible {
   outline: 2px solid var(--aira-focus-ring);
   outline-offset: 2px;
 }
 
+/* 3. Accessibility Utilities */
 .aira-skip-link {
   position: fixed;
   left: var(--aira-space-4);
   top: var(--aira-space-4);
-  z-index: 10000;
+  z-index: var(--aira-z-skip-link);
   transform: translateY(-200%);
   padding: var(--aira-space-2) var(--aira-space-4);
   background: var(--aira-surface);
@@ -97,30 +139,39 @@ body {
   transform: translateY(0);
 }
 
+.aira-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* 4. Global Shell */
 .aira-app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.aira-header {
-  min-height: var(--aira-header-height);
+.aira-global-header {
+  position: relative;
+  z-index: var(--aira-z-header);
   display: flex;
   align-items: center;
   gap: var(--aira-space-4);
-  padding: 0 var(--aira-space-6);
+  min-height: var(--aira-header-min-height);
+  padding: var(--aira-space-3) var(--aira-space-6);
   background: var(--aira-surface);
   border-top: 4px solid var(--aira-green);
   border-bottom: 1px solid var(--aira-border);
 }
 
-.aira-logo {
-  display: block;
-  width: auto;
-  max-height: 2rem;
-}
-
-.aira-brand {
+.aira-identity {
   display: flex;
   align-items: center;
   gap: var(--aira-space-4);
@@ -131,15 +182,37 @@ body {
   display: inline-flex;
   align-items: center;
   gap: var(--aira-space-4);
+  min-width: 0;
   color: var(--aira-text);
   text-decoration: none;
 }
 
+.aira-logo {
+  display: block;
+  width: auto;
+  max-height: 2rem;
+}
+
+.aira-logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 2rem;
+  border-radius: var(--aira-radius-control);
+  background: var(--aira-navy);
+  color: var(--aira-white);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .aira-app-name {
+  display: block;
   padding-left: var(--aira-space-4);
   border-left: 1px solid var(--aira-border);
   font-size: 1.125rem;
   font-weight: 600;
+  line-height: 1.2;
   color: var(--aira-text);
 }
 
@@ -151,52 +224,255 @@ body {
   color: var(--aira-text-secondary);
 }
 
-.aira-header-actions {
+.aira-global-search {
+  flex: 1 1 18rem;
+  max-width: 30rem;
   margin-left: auto;
+}
+
+.aira-search-form {
   display: flex;
   align-items: center;
-  gap: var(--aira-space-3);
+  gap: var(--aira-space-2);
 }
 
-.aira-primary-nav {
-  min-height: var(--aira-nav-height);
+.aira-search-input {
+  width: 100%;
+  min-height: var(--aira-control-height);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--aira-blue-gray);
+  border-radius: var(--aira-radius-control);
+  background: var(--aira-surface);
+  color: var(--aira-text);
+}
+
+.aira-global-actions,
+.aira-account-area {
   display: flex;
-  align-items: stretch;
-  background: var(--aira-navy);
-  overflow-x: auto;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
 }
 
-.aira-primary-nav a {
+.aira-account-label {
+  font-size: 0.875rem;
+  color: var(--aira-text-secondary);
+}
+
+.aira-environment-badge {
   display: inline-flex;
   align-items: center;
-  min-height: var(--aira-nav-height);
-  padding: 0 var(--aira-space-4);
-  color: var(--aira-white);
-  text-decoration: none;
-  border-bottom: 3px solid transparent;
-  white-space: nowrap;
-}
-
-.aira-primary-nav a:hover {
-  background: var(--aira-navy-hover);
-}
-
-.aira-primary-nav a[aria-current="page"] {
-  border-bottom-color: var(--aira-green);
+  min-height: 1.5rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid #e0b000;
+  border-radius: var(--aira-radius-pill);
+  background: var(--aira-warning-surface);
+  color: var(--aira-warning-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .aira-main {
   width: 100%;
-  max-width: var(--aira-page-max);
-  margin: 0 auto;
-  padding: var(--aira-space-6);
   flex: 1 0 auto;
+}
+
+/* 5. Contextual Navigation */
+.aira-context-header {
+  background: var(--aira-navy);
+  color: var(--aira-white);
+}
+
+.aira-context-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--aira-space-6);
+  width: min(100%, var(--aira-page-wide));
+  margin: 0 auto;
+  padding: var(--aira-space-3) var(--aira-space-6);
+}
+
+.aira-context-title {
+  min-width: 14rem;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.aira-context-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--aira-space-1);
+  min-height: var(--aira-context-nav-height);
+  overflow-x: auto;
+}
+
+.aira-context-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0 var(--aira-space-3);
+  border-radius: var(--aira-radius-control);
+  color: var(--aira-white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.aira-context-nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.aira-context-nav a[aria-current="page"] {
+  background: var(--aira-white);
+  color: var(--aira-navy);
+}
+
+/* 6. Layout Primitives */
+.aira-container,
+.aira-container--standard {
+  width: min(100% - 2rem, var(--aira-page-standard));
+  margin-inline: auto;
+  padding-block: var(--aira-space-6);
+}
+
+.aira-container--narrow {
+  width: min(100% - 2rem, var(--aira-page-narrow));
+  margin-inline: auto;
+  padding-block: var(--aira-space-6);
+}
+
+.aira-container--wide {
+  width: min(100% - 2rem, var(--aira-page-wide));
+  margin-inline: auto;
+  padding-block: var(--aira-space-6);
 }
 
 .aira-reading {
   max-width: var(--aira-reading-max);
 }
 
+.aira-stack {
+  display: grid;
+  gap: var(--aira-space-4);
+}
+
+.aira-stack--compact {
+  gap: var(--aira-space-2);
+}
+
+.aira-stack--loose {
+  gap: var(--aira-space-6);
+}
+
+.aira-cluster {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}
+
+.aira-cluster--between {
+  justify-content: space-between;
+}
+
+.aira-cluster--end {
+  justify-content: flex-end;
+}
+
+.aira-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--aira-space-4);
+}
+
+.aira-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  gap: var(--aira-space-4);
+}
+
+.aira-sidebar-layout {
+  display: grid;
+  grid-template-columns: minmax(14rem, var(--aira-sidebar-width)) minmax(0, 1fr);
+  gap: var(--aira-space-6);
+  align-items: start;
+}
+
+.aira-sidebar {
+  display: grid;
+  gap: var(--aira-space-3);
+}
+
+.aira-sidebar--sticky {
+  position: sticky;
+  top: var(--aira-space-4);
+}
+
+.aira-sidebar-section {
+  padding-top: var(--aira-space-3);
+  border-top: 1px solid var(--aira-border-subtle);
+}
+
+.aira-sidebar-title {
+  margin: 0 0 var(--aira-space-2);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--aira-text-secondary);
+}
+
+.aira-sidebar-nav {
+  display: grid;
+  gap: var(--aira-space-1);
+}
+
+.aira-sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--aira-space-2);
+  min-height: 2.25rem;
+  padding: var(--aira-space-2) var(--aira-space-3);
+  border-left: 4px solid transparent;
+  border-radius: var(--aira-radius-control);
+  color: var(--aira-text);
+  text-decoration: none;
+}
+
+.aira-sidebar-link:hover {
+  background: var(--aira-row-hover);
+}
+
+.aira-sidebar-link[aria-current="page"] {
+  border-left-color: var(--aira-green);
+  background: var(--aira-surface-selected);
+  font-weight: 600;
+}
+
+.aira-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+  gap: var(--aira-space-6);
+  align-items: start;
+}
+
+.aira-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--aira-space-3);
+  padding: var(--aira-space-3);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-panel);
+  background: var(--aira-surface);
+}
+
+/* 7. Typography */
 .aira-page-header {
   display: flex;
   align-items: flex-start;
@@ -213,16 +489,19 @@ body {
   color: var(--aira-text);
 }
 
-.aira-page-intro {
+.aira-public-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.12;
+  font-weight: 400;
+  color: var(--aira-text);
+}
+
+.aira-page-intro,
+.aira-public-intro {
   margin: var(--aira-space-2) 0 0;
   max-width: var(--aira-reading-max);
   color: var(--aira-text-secondary);
-}
-
-.aira-page-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--aira-space-2);
 }
 
 .aira-section-title {
@@ -258,9 +537,10 @@ body {
   text-decoration-thickness: 2px;
 }
 
+/* 8. Buttons and Actions */
 .aira-button,
 .aira-main a.aira-button {
-  min-height: 2.5rem;
+  min-height: var(--aira-control-height);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -308,36 +588,117 @@ body {
   background: var(--aira-danger);
 }
 
-.aira-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
+.aira-button--ghost,
+.aira-main a.aira-button--ghost {
+  color: var(--aira-text);
+  background: transparent;
+  border-color: transparent;
 }
 
-.aira-panel,
-.aira-card {
-  padding: var(--aira-space-4);
-  background: var(--aira-surface);
+.aira-button--ghost:hover,
+.aira-main a.aira-button--ghost:hover {
+  background: var(--aira-surface-muted);
+}
+
+.aira-button--link,
+.aira-main a.aira-button--link {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--aira-link);
+  text-decoration: underline;
+}
+
+.aira-button--small,
+.aira-main a.aira-button--small {
+  min-height: var(--aira-control-height-small);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8125rem;
+}
+
+.aira-button--icon {
+  width: var(--aira-touch-target);
+  padding-inline: 0;
+}
+
+.aira-button:disabled,
+.aira-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.64;
+}
+
+.aira-action-group,
+.aira-page-actions,
+.aira-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+  align-items: center;
+}
+
+.aira-action-group--end,
+.aira-form-actions--end {
+  justify-content: flex-end;
+}
+
+.aira-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--aira-space-3);
+  padding: var(--aira-space-3);
   border: 1px solid var(--aira-border);
   border-radius: var(--aira-radius-panel);
+  background: var(--aira-surface);
+}
+
+.aira-sticky-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--aira-z-sticky);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--aira-space-2);
+  padding: var(--aira-space-3) 0 max(var(--aira-space-3), env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(242, 242, 242, 0), var(--aira-background) 35%);
+}
+
+/* 9. Forms */
+.aira-form {
+  display: grid;
+  gap: var(--aira-space-4);
 }
 
 .aira-field {
-  margin-bottom: var(--aira-space-4);
+  display: grid;
+  gap: var(--aira-space-1);
 }
 
-.aira-field label {
-  display: block;
-  margin-bottom: var(--aira-space-1);
+.aira-field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--aira-space-4);
+}
+
+.aira-field label,
+.aira-label {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--aira-text);
+}
+
+.aira-required {
+  color: var(--aira-danger);
+  font-weight: 700;
 }
 
 .aira-input,
 .aira-select,
 .aira-textarea {
   width: 100%;
-  min-height: 2.5rem;
+  min-height: var(--aira-control-height);
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--aira-blue-gray);
   border-radius: var(--aira-radius-control);
@@ -346,25 +707,390 @@ body {
   font: 400 1rem/1.4 var(--aira-font-sans);
 }
 
+.aira-textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
 .aira-input[aria-invalid="true"],
 .aira-select[aria-invalid="true"],
 .aira-textarea[aria-invalid="true"] {
   border-color: var(--aira-danger);
 }
 
+.aira-input:disabled,
+.aira-select:disabled,
+.aira-textarea:disabled {
+  background: var(--aira-surface-disabled);
+  color: var(--aira-text-disabled);
+  cursor: not-allowed;
+}
+
 .aira-field-help {
-  margin-top: var(--aira-space-1);
   font-size: 0.8125rem;
   color: var(--aira-text-secondary);
 }
 
 .aira-field-error {
-  margin-top: var(--aira-space-1);
   font-size: 0.875rem;
   color: var(--aira-danger);
   font-weight: 600;
 }
 
+.aira-error-summary {
+  padding: var(--aira-space-4);
+  border: 2px solid var(--aira-danger);
+  border-radius: var(--aira-radius-panel);
+  background: var(--aira-error-surface);
+}
+
+.aira-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: var(--aira-space-4);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-panel);
+}
+
+.aira-legend {
+  padding: 0 var(--aira-space-1);
+  font-weight: 600;
+}
+
+.aira-check,
+.aira-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--aira-space-2);
+  min-height: 1.75rem;
+}
+
+.aira-check input,
+.aira-radio input {
+  flex: 0 0 auto;
+  margin-top: 0.25rem;
+}
+
+.aira-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aira-space-2);
+  min-height: var(--aira-touch-target);
+  font-weight: 600;
+}
+
+.aira-switch input {
+  width: 2.75rem;
+  height: 1.5rem;
+  accent-color: var(--aira-green-accessible);
+}
+
+.aira-segmented-control,
+.aira-chip-list,
+.aira-rating-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}
+
+.aira-segment,
+.aira-chip,
+.aira-rating-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--aira-border-strong);
+  border-radius: var(--aira-radius-pill);
+  background: var(--aira-surface);
+  color: var(--aira-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.aira-segment[aria-selected="true"],
+.aira-chip[aria-selected="true"],
+.aira-rating-option[aria-selected="true"],
+.aira-segment.is-selected,
+.aira-chip.is-selected,
+.aira-rating-option.is-selected {
+  border-color: var(--aira-green-accessible);
+  background: var(--aira-surface-selected);
+  color: var(--aira-green-accessible);
+}
+
+.aira-inline-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}
+
+/* 10. Badges and Tags */
+.aira-badge,
+.aira-tag,
+.aira-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aira-space-1);
+  width: fit-content;
+  max-width: 100%;
+  min-height: 1.5rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--aira-radius-pill);
+  background: var(--aira-surface-muted);
+  color: var(--aira-text);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.aira-badge--outline,
+.aira-tag--outline {
+  background: transparent;
+  border-color: var(--aira-border-strong);
+}
+
+.aira-badge--info,
+.aira-tag--info,
+.aira-status--info {
+  background: var(--aira-info-surface);
+  color: var(--aira-info);
+  border-color: #b7d7ec;
+}
+
+.aira-badge--success,
+.aira-tag--success,
+.aira-status--success {
+  background: var(--aira-success-surface);
+  color: var(--aira-success);
+  border-color: #b7dbc6;
+}
+
+.aira-badge--warning,
+.aira-tag--warning,
+.aira-status--warning {
+  background: var(--aira-warning-surface);
+  color: var(--aira-warning-text);
+  border-color: #edd675;
+}
+
+.aira-badge--danger,
+.aira-tag--danger,
+.aira-status--danger {
+  background: var(--aira-error-surface);
+  color: var(--aira-danger);
+  border-color: #efb3ad;
+}
+
+.aira-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}
+
+.aira-status-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* 11. Cards, Panels, and Choice Rows */
+.aira-panel,
+.aira-card,
+.aira-empty-state {
+  background: var(--aira-surface);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-panel);
+}
+
+.aira-panel {
+  padding: var(--aira-space-4);
+}
+
+.aira-card,
+.aira-empty-state {
+  overflow: hidden;
+  box-shadow: var(--aira-shadow-card);
+}
+
+.aira-card__media {
+  aspect-ratio: 16 / 9;
+  background: var(--aira-surface-muted);
+}
+
+.aira-card__header,
+.aira-card__body,
+.aira-card__footer,
+.aira-panel__header,
+.aira-panel__body,
+.aira-panel__footer {
+  padding: var(--aira-space-4);
+}
+
+.aira-card__header + .aira-card__body,
+.aira-panel__header + .aira-panel__body {
+  padding-top: 0;
+}
+
+.aira-card__title,
+.aira-panel__title {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.aira-card__meta,
+.aira-card__description,
+.aira-panel__meta {
+  color: var(--aira-text-secondary);
+}
+
+.aira-interactive-card,
+.aira-main a.aira-interactive-card {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.aira-interactive-card:hover {
+  border-color: var(--aira-green-accessible);
+  box-shadow: var(--aira-shadow-elevated);
+}
+
+.aira-choice-list {
+  display: grid;
+  gap: var(--aira-space-3);
+}
+
+.aira-choice-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--aira-space-3);
+  align-items: start;
+  padding: var(--aira-space-4);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-card);
+  background: var(--aira-surface);
+}
+
+.aira-choice-row:hover {
+  border-color: var(--aira-border-strong);
+}
+
+.aira-choice-row[aria-selected="true"],
+.aira-choice-row.is-selected {
+  border-color: var(--aira-green-accessible);
+  background: var(--aira-surface-selected);
+}
+
+.aira-choice-row.is-followed,
+.aira-choice-row.is-registered {
+  border-color: var(--aira-info);
+  background: var(--aira-info-surface);
+}
+
+.aira-choice-row[aria-disabled="true"],
+.aira-choice-row.is-disabled {
+  background: var(--aira-surface-disabled);
+  color: var(--aira-text-disabled);
+}
+
+.aira-choice-row__control {
+  padding-top: 0.125rem;
+}
+
+.aira-choice-row__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.aira-choice-row__meta,
+.aira-choice-row__description {
+  margin: var(--aira-space-1) 0 0;
+  color: var(--aira-text-secondary);
+}
+
+.aira-choice-row__actions {
+  margin-top: var(--aira-space-3);
+}
+
+.aira-empty-state {
+  padding: var(--aira-space-6);
+  text-align: center;
+  color: var(--aira-text-secondary);
+}
+
+.aira-empty-state__title {
+  margin: 0 0 var(--aira-space-2);
+  color: var(--aira-text);
+  font-weight: 600;
+}
+
+/* 12. Event Lists */
+.aira-event-section {
+  display: grid;
+  gap: var(--aira-space-3);
+}
+
+.aira-event-section__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.aira-event-list {
+  display: grid;
+  gap: var(--aira-space-3);
+}
+
+.aira-event-row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) auto;
+  gap: var(--aira-space-4);
+  align-items: center;
+  padding: var(--aira-space-4);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-card);
+  background: var(--aira-surface);
+}
+
+.aira-event-row--past {
+  background: var(--aira-surface-muted);
+}
+
+.aira-event-date {
+  display: grid;
+  gap: 0.125rem;
+  color: var(--aira-text);
+  font-weight: 700;
+}
+
+.aira-event-time {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--aira-text-secondary);
+}
+
+.aira-event-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.aira-event-meta,
+.aira-event-description {
+  margin: var(--aira-space-1) 0 0;
+  color: var(--aira-text-secondary);
+}
+
+/* 13. Tables */
 .aira-table-wrap {
   width: 100%;
   overflow-x: auto;
@@ -403,11 +1129,7 @@ body {
   color: var(--aira-text);
 }
 
-.aira-density-compact .aira-table th,
-.aira-density-compact .aira-table td {
-  padding: 0.5rem 0.75rem;
-}
-
+/* 14. Alerts */
 .aira-alert {
   padding: var(--aira-space-4);
   border-left: 4px solid;
@@ -444,6 +1166,21 @@ body {
   border-color: var(--aira-danger);
 }
 
+/* 15. Management Layouts */
+.aira-management-shell {
+  display: grid;
+  gap: var(--aira-space-6);
+}
+
+.aira-management-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--aira-space-3);
+}
+
+/* 16. Footer */
 .aira-footer {
   flex: 0 0 auto;
   padding: 0.75rem 1.5rem;
@@ -468,14 +1205,83 @@ body {
   text-underline-offset: 0.15em;
 }
 
-@media (max-width: 48rem) {
-  .aira-header {
+/* 17. Utilities */
+.aira-muted {
+  color: var(--aira-text-secondary) !important;
+}
+
+.aira-danger-text {
+  color: var(--aira-danger) !important;
+}
+
+.aira-full-width {
+  width: 100% !important;
+}
+
+.aira-align-end {
+  margin-left: auto !important;
+}
+
+.aira-scroll-region {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.aira-density-compact .aira-table th,
+.aira-density-compact .aira-table td,
+.aira-density-compact.aira-table th,
+.aira-density-compact.aira-table td {
+  padding: 0.5rem 0.75rem;
+}
+
+.aira-no-print {
+  print-color-adjust: exact;
+}
+
+.aira-print-only {
+  display: none !important;
+}
+
+/* 18. Responsive Rules */
+@media (max-width: 64rem) {
+  .aira-global-header {
     align-items: flex-start;
-    flex-direction: column;
-    padding: var(--aira-space-3) var(--aira-space-4);
+    flex-wrap: wrap;
   }
 
-  .aira-brand {
+  .aira-global-search {
+    order: 4;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .aira-context-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--aira-space-2);
+  }
+
+  .aira-context-nav {
+    width: 100%;
+  }
+
+  .aira-sidebar-layout,
+  .aira-split {
+    grid-template-columns: 1fr;
+  }
+
+  .aira-sidebar--sticky {
+    position: static;
+  }
+}
+
+@media (max-width: 48rem) {
+  .aira-global-header,
+  .aira-context-inner {
+    padding-inline: var(--aira-space-4);
+  }
+
+  .aira-identity {
     width: 100%;
   }
 
@@ -484,29 +1290,75 @@ body {
     border-left: 0;
   }
 
-  .aira-header-actions {
-    margin-left: 0;
+  .aira-global-actions,
+  .aira-account-area {
     width: 100%;
-    justify-content: flex-start;
   }
 
-  .aira-main {
-    padding: var(--aira-space-4);
-  }
-
-  .aira-page-header {
+  .aira-page-header,
+  .aira-management-header {
     flex-direction: column;
   }
 
-  .aira-page-actions {
+  .aira-page-actions,
+  .aira-form-actions,
+  .aira-action-group,
+  .aira-action-bar {
     width: 100%;
   }
 
-  .aira-footer {
+  .aira-page-actions .aira-button,
+  .aira-form-actions .aira-button,
+  .aira-sticky-actions .aira-button {
+    flex: 1 1 auto;
+  }
+
+  .aira-event-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .aira-choice-row {
+    grid-template-columns: 1fr;
+  }
+
+  .aira-sticky-actions {
+    position: fixed;
+    left: 0;
+    right: 0;
     padding-inline: var(--aira-space-4);
+    border-top: 1px solid var(--aira-border);
+  }
+
+  .aira-main {
+    padding-bottom: 4.5rem;
   }
 }
 
+/* 19. Print Rules */
+@media print {
+  .aira-no-print,
+  .aira-global-header,
+  .aira-context-header,
+  .aira-sticky-actions {
+    display: none !important;
+  }
+
+  .aira-print-only {
+    display: block !important;
+  }
+
+  .aira-main,
+  .aira-container,
+  .aira-container--narrow,
+  .aira-container--standard,
+  .aira-container--wide {
+    width: auto;
+    padding: 0;
+  }
+}
+
+/* 20. Reduced-Motion Rules */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     scroll-behavior: auto !important;

@@ -1,0 +1,670 @@
+# InteropHub Public Style Snapshot
+
+Sampled 20 public-oriented pages after logging in as `nbunker@immregistries.org`.
+Parsed 322 CSS selectors and 173 unique CSS class selectors from `/hub/css/main.css`.
+Parsed 462 selectors and 228 unique CSS class selectors from sampled inline `<style>` blocks.
+
+## CSS Class Prefixes
+
+- `es-*`: 105
+- `agenda-*`: 66
+- `estp-*`: 29
+- `attend-*`: 28
+- `mseries-*`: 26
+- `curated-*`: 17
+- `admin-*`: 15
+- `my-*`: 13
+- `prev-*`: 13
+- `is-*`: 8
+- `pres-*`: 7
+- `doc-*`: 6
+- `col-*`: 5
+- `role-*`: 5
+- `status-*`: 5
+- `add-*`: 4
+- `quick-*`: 4
+- `stat-*`: 4
+- `field-*`: 3
+- `open-*`: 3
+- `presenter-*`: 3
+- `copy-*`: 2
+- `estd-*`: 2
+- `inv-*`: 2
+- `login-*`: 2
+- `banner-*`: 1
+- `button-*`: 1
+- `checklist-*`: 1
+- `click-*`: 1
+- `container-*`: 1
+- `data-*`: 1
+- `env-*`: 1
+- `form-*`: 1
+- `js-*`: 1
+- `legal-*`: 1
+- `no-*`: 1
+- `panel-*`: 1
+- `section-*`: 1
+- `tagline-*`: 1
+
+## Most Common CSS Classes In Stylesheet
+
+- `.doc-section`: 22 selector references
+- `.login-form`: 16 selector references
+- `.container`: 9 selector references
+- `.legal-footer`: 9 selector references
+- `.es-topic-row`: 8 selector references
+- `.admin-with-rail`: 7 selector references
+- `.admin-table`: 6 selector references
+- `.admin-nav-group`: 6 selector references
+- `.es-topic-state`: 6 selector references
+- `.es-review-topic-row`: 6 selector references
+- `.attend-form`: 6 selector references
+- `.doc-code`: 5 selector references
+- `.admin-menu-panel`: 5 selector references
+- `.doc-card`: 5 selector references
+- `.is-reviewed`: 5 selector references
+- `.es-cdc-topic-row`: 5 selector references
+- `.es-confirm-sheet`: 5 selector references
+- `.attend-attendee-table`: 5 selector references
+- `.es-round-table`: 5 selector references
+- `.data-table`: 4 selector references
+- `.admin-menu-group`: 4 selector references
+- `.es-cdc-signal-btn`: 4 selector references
+- `.is-cdc-policy-blocked`: 4 selector references
+- `.es-sticky-action`: 4 selector references
+- `.es-confirm-actions`: 4 selector references
+- `.es-refresh-switch`: 4 selector references
+- `.es-refresh-slider`: 4 selector references
+- `.es-table-health-table`: 4 selector references
+- `.admin-shell`: 3 selector references
+- `.admin-rail`: 3 selector references
+- `.es-primary-cta`: 3 selector references
+- `.es-topic-preview`: 3 selector references
+- `.es-detail-sheet`: 3 selector references
+- `.es-detail-actions`: 3 selector references
+- `.login-page`: 2 selector references
+- `.panel`: 2 selector references
+- `.button-link`: 2 selector references
+- `.doc-page`: 2 selector references
+- `.admin-main`: 2 selector references
+- `.admin-quick-links`: 2 selector references
+- `.doc-kicker`: 2 selector references
+- `.es-topics-page`: 2 selector references
+- `.es-topics-header`: 2 selector references
+- `.es-topics-next-step`: 2 selector references
+- `.is-selected`: 2 selector references
+- `.is-subscribed`: 2 selector references
+- `.is-meeting-registered`: 2 selector references
+- `.es-review-selected-wrap`: 2 selector references
+- `.es-review-edit-wrap`: 2 selector references
+- `.es-review-score-btn`: 2 selector references
+- `.es-cdc-intro`: 2 selector references
+- `.es-cdc-topic-meta`: 2 selector references
+- `.es-cdc-policy-action`: 2 selector references
+- `.es-cdc-row-status`: 2 selector references
+- `.es-topic-top`: 2 selector references
+- `.es-secondary-button`: 2 selector references
+- `.es-name-row`: 2 selector references
+- `.es-checkbox-row`: 2 selector references
+- `.es-table-results-actions`: 2 selector references
+- `.es-reg-grid`: 2 selector references
+
+## Most Common Inline/Page-Local CSS Classes
+
+- `.estp-sidebar`: 12 selector references
+- `.estp-nav-summary`: 12 selector references
+- `.estp-nav-scroll`: 9 selector references
+- `.estp-nav-link`: 9 selector references
+- `.estp-overview-list`: 9 selector references
+- `.agenda-table`: 9 selector references
+- `.agenda-inline-form`: 7 selector references
+- `.estp-layout`: 6 selector references
+- `.estp-main`: 6 selector references
+- `.estp-sidebar-home`: 6 selector references
+- `.estp-nav-section`: 6 selector references
+- `.estp-overview-card`: 6 selector references
+- `.estp-overview-panel`: 6 selector references
+- `.estp-overview-stage-item`: 6 selector references
+- `.estp-context-inline`: 6 selector references
+- `.estp-search-form`: 6 selector references
+- `.estp-search-btn`: 6 selector references
+- `.estp-auth-banner`: 6 selector references
+- `.es-stage-title`: 6 selector references
+- `.es-review-topic-row`: 6 selector references
+- `.prev-items-table`: 5 selector references
+- `.mseries-table`: 5 selector references
+- `.agenda-edit-form`: 4 selector references
+- `.agenda-meeting-transitions`: 4 selector references
+- `.curated-cadence-table`: 4 selector references
+- `.estp-shell`: 3 selector references
+- `.estp-nav-group`: 3 selector references
+- `.estp-nav-title`: 3 selector references
+- `.estp-nav-links-wrap`: 3 selector references
+- `.is-active`: 3 selector references
+- `.estp-title`: 3 selector references
+- `.estp-subtitle`: 3 selector references
+- `.estp-overview-grid`: 3 selector references
+- `.estp-overview-stage-list`: 3 selector references
+- `.estp-overview-stage-icon`: 3 selector references
+- `.estp-context-points`: 3 selector references
+- `.estp-context-process`: 3 selector references
+- `.estp-search-input`: 3 selector references
+- `.estp-search-meta`: 3 selector references
+- `.es-neighborhood-group`: 3 selector references
+- `.es-topic-list`: 3 selector references
+- `.es-topic-content`: 3 selector references
+- `.es-topic-preview`: 3 selector references
+- `.es-review-sidebar-count`: 3 selector references
+- `.es-review-score-wrap`: 3 selector references
+- `.es-review-score-wrap-disabled`: 3 selector references
+- `.es-detail-comments-wrap`: 3 selector references
+- `.es-detail-comments-list`: 3 selector references
+- `.col-controls`: 3 selector references
+- `.agenda-item-status-badge`: 3 selector references
+- `.agenda-all-meetings`: 3 selector references
+- `.mseries-breadcrumb`: 3 selector references
+- `.mseries-admin-bar`: 3 selector references
+- `.estd-back`: 2 selector references
+- `.agenda-page`: 2 selector references
+- `.agenda-header`: 2 selector references
+- `.agenda-title`: 2 selector references
+- `.agenda-meta`: 2 selector references
+- `.agenda-meta-row`: 2 selector references
+- `.click-to-edit`: 2 selector references
+- `.agenda-description`: 2 selector references
+- `.agenda-attendance`: 2 selector references
+- `.agenda-attend-link`: 2 selector references
+- `.agenda-join-link`: 2 selector references
+- `.agenda-duration-warning`: 2 selector references
+- `.agenda-duration-info`: 2 selector references
+- `.agenda-duration-ok`: 2 selector references
+- `.agenda-topic-link`: 2 selector references
+- `.agenda-item-linked-topic`: 2 selector references
+- `.presenter-name`: 2 selector references
+- `.pres-role-label`: 2 selector references
+- `.pres-btn`: 2 selector references
+- `.pres-btn-accept`: 2 selector references
+- `.pres-btn-remove`: 2 selector references
+- `.add-pres-btn`: 2 selector references
+- `.quick-pick-chip`: 2 selector references
+- `.agenda-status-btn`: 2 selector references
+- `.agenda-add-item`: 2 selector references
+- `.add-item-row`: 2 selector references
+- `.agenda-status-controls`: 2 selector references
+
+## Body Classes Seen
+
+- `.admin-page`: 3 sampled pages
+
+## Sampled Pages
+
+### `/hub/`
+- Status: HTTP 200
+- Title: Welcome - InteropHub
+- Body class: `admin-page`
+- Headings: Admin, Admin Navigation, Platform, People and Collaboration, Content, Emerging Standards
+- Forms: POST /hub/logout
+- Frequent classes: `.admin-nav-group` (5), `.admin-page` (1), `.admin-shell` (1), `.admin-rail` (1), `.admin-rail-subtitle` (1), `.admin-nav-panel` (1), `.admin-rail-footer-link` (1), `.admin-main` (1), `.panel` (1), `.banner` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+### `/hub/home`
+- Status: HTTP 200
+- Title: Welcome - InteropHub
+- Body class: `admin-page`
+- Headings: Admin, Admin Navigation, Platform, People and Collaboration, Content, Emerging Standards
+- Forms: POST /hub/logout
+- Frequent classes: `.admin-nav-group` (5), `.admin-page` (1), `.admin-shell` (1), `.admin-rail` (1), `.admin-rail-subtitle` (1), `.admin-nav-panel` (1), `.admin-rail-footer-link` (1), `.admin-main` (1), `.panel` (1), `.banner` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+### `/hub/welcome`
+- Status: HTTP 200
+- Title: Welcome - InteropHub
+- Body class: `admin-page`
+- Headings: Admin, Admin Navigation, Platform, People and Collaboration, Content, Emerging Standards
+- Forms: POST /hub/logout
+- Frequent classes: `.admin-nav-group` (5), `.admin-page` (1), `.admin-shell` (1), `.admin-rail` (1), `.admin-rail-subtitle` (1), `.admin-nav-panel` (1), `.admin-rail-footer-link` (1), `.admin-main` (1), `.panel` (1), `.banner` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+### `/hub/register/DD26`
+- Status: HTTP 200
+- Title: Register - InteropHub
+- Headings: Emerging Standards Deep Dive - Pittsburg 2026
+- Forms: POST /hub/register/DD26
+- Frequent classes: `.container` (1), `.login-form` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+### `/hub/register/complete/DD26`
+- Status: HTTP 200
+- Title: Registration Complete - InteropHub
+- Headings: Registration Complete, Meetings and Groups, ImmDS + HALO, Immunization Focus Group, Immunization Vocabularies Collaboration (IVC) Monthly Meeting, Message Quality Evaluation Tool (MQE)
+- Forms: POST /hub/register/complete/DD26, POST /hub/register/complete/DD26
+- Frequent classes: `.es-detail-stage` (7), `.es-topic-row` (4), `.es-topic-checkbox-wrap` (4), `.es-topic-checkbox` (4), `.es-meeting-checkbox` (4), `.es-topic-content` (4), `.es-topic-top` (4), `.es-topic-state` (4), `.es-topic-preview` (4), `.es-stage-group` (2), `.es-stage-title` (2), `.es-topics-page` (1), `.es-topics-header` (1), `.es-topics-campaign` (1), `.es-topic-groups` (1), `.login-form` (1), `.es-topic-list` (1), `.es-topics-next-step` (1)
+
+### `/hub/registerForMeeting/DD26/Immunization-CDS`
+- Status: HTTP 200
+- Title: Join - InteropHub
+- Headings: Join the ImmDS + HALO
+- Forms: POST /hub/registerForMeeting/DD26/Immunization-CDS
+- Frequent classes: `.container` (1), `.login-form` (1), `.button-link` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+### `/hub/topics/DD26`
+- Status: HTTP 200
+- Title: Emerging Standards Topics - InteropHub
+- Headings: Emerging Standards Topics, Advanced Access, Bulk Data Exchange (FHIR Bulk Data), Event-Based Exchange (FHIR Subscriptions), IIS Metrics Access (IISAR), Population Analytics
+- Forms: POST /hub/topics/DD26
+- Frequent classes: `.es-topic-row` (176), `.es-topic-checkbox-wrap` (176), `.es-topic-checkbox` (176), `.es-topic-content` (176), `.es-topic-top` (176), `.es-topic-state` (176), `.es-topic-preview` (176), `.es-stage-group` (57), `.es-topic-list` (57), `.es-neighborhood-group` (15), `.es-stage-title` (15), `.es-detail-stage` (3), `.es-topics-page` (1), `.es-topics-header` (1), `.es-topics-campaign` (1), `.es-topics-search-label` (1), `.es-topics-search` (1), `.es-topic-groups` (1)
+
+### `/hub/table/DD26/1?view=vote`
+- Status: HTTP 200
+- Title: Topics for Table 1 - InteropHub
+- Headings: Topics for Table 1, Table Topics, Patient Updates (ADT), Population Analytics, Received Code Validation, Inventory Reconciliation
+- Forms: POST /hub/table/DD26/1
+- Frequent classes: `.es-topic-row` (6), `.es-topic-checkbox-wrap` (6), `.es-topic-checkbox` (6), `.es-topic-content` (6), `.es-topic-top` (6), `.es-topic-preview` (6), `.env-ribbon` (2), `.es-topics-campaign` (2), `.es-detail-stage` (2), `.es-topics-page` (1), `.es-topics-header` (1), `.es-topic-groups` (1), `.es-stage-group` (1), `.es-stage-title` (1), `.es-topic-list` (1), `.es-detail-overlay` (1), `.es-detail-sheet` (1), `.es-detail-description` (1)
+
+### `/hub/table/DD26/1?view=results`
+- Status: HTTP 200
+- Title: Topics for Table 1 - InteropHub
+- Headings: Topics for Table 1, Table Topics, Patient Updates (ADT), Population Analytics, Received Code Validation, Inventory Reconciliation
+- Forms: POST /hub/table/DD26/1
+- Frequent classes: `.es-topic-row` (6), `.es-topic-checkbox-wrap` (6), `.es-topic-checkbox` (6), `.es-topic-content` (6), `.es-topic-top` (6), `.es-topic-preview` (6), `.env-ribbon` (2), `.es-topics-campaign` (2), `.es-detail-stage` (2), `.es-topics-page` (1), `.es-topics-header` (1), `.es-topic-groups` (1), `.es-stage-group` (1), `.es-stage-title` (1), `.es-topic-list` (1), `.es-detail-overlay` (1), `.es-detail-sheet` (1), `.es-detail-description` (1)
+
+### `/hub/attend/Immunization-CDS`
+- Status: HTTP 200
+- Title: Meeting Attendance - ImmDS + HALO - InteropHub
+- Headings: ImmDS + HALO, Today’s Attendees
+- Forms: POST /hub/attend/Immunization-CDS
+- Frequent classes: `.container` (1), `.attend-page` (1), `.attend-heading` (1), `.attend-description` (1), `.attend-form` (1), `.attend-logged-in-notice` (1), `.attend-mode-toggle` (1), `.attend-checkbox-row` (1), `.attend-checkbox-label` (1), `.attend-hope-textarea` (1), `.attend-submit-btn` (1), `.attend-attendees-section` (1), `.attend-attendees-heading` (1), `.attend-no-attendees` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+### `/hub/attend/Immunization-CDS?anon=1`
+- Status: HTTP 200
+- Title: Meeting Attendance - ImmDS + HALO - InteropHub
+- Headings: ImmDS + HALO, Today’s Attendees
+- Forms: POST /hub/attend/Immunization-CDS
+- Frequent classes: `.attend-required` (2), `.attend-radio-label` (2), `.container` (1), `.attend-page` (1), `.attend-heading` (1), `.attend-description` (1), `.attend-form` (1), `.attend-action-fieldset` (1), `.attend-checkbox-row` (1), `.attend-checkbox-label` (1), `.attend-hope-textarea` (1), `.attend-submit-btn` (1), `.attend-attendees-section` (1), `.attend-attendees-heading` (1), `.attend-no-attendees` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+### `/hub/es/topics?space=emerging-standards`
+- Status: HTTP 200
+- Title: Emerging Standards Topics - InteropHub
+- Headings: Topic Spaces, Explore Topics, Emerging Standards, Stages, Neighborhoods
+- Forms: GET /hub/es/topics
+- Frequent classes: `.estp-nav-link` (34), `.estp-overview-stage-item` (7), `.estp-overview-stage-icon` (7), `.es-detail-stage` (4), `.estp-nav-section` (3), `.estp-nav-title` (3), `.estp-nav-summary` (3), `.estp-nav-links-wrap` (3), `.es-detail-comments-wrap` (3), `.es-detail-actions` (3), `.env-ribbon` (2), `.estp-nav-group` (2), `.estp-overview-panel` (2), `.es-topic-meta` (2), `.estp-shell` (1), `.estp-layout` (1), `.estp-sidebar` (1), `.is-active` (1)
+- Inline/page-local selectors: 64
+
+### `/hub/es/topics?space=emerging-standards&view=all`
+- Status: HTTP 200
+- Title: Emerging Standards Topics - InteropHub
+- Headings: Topic Spaces, Explore Topics, Emerging Standards Topics, ACK Error Reporting (ERR-5), Acknowledgements (ACK), ADT on FHIR
+- Forms: GET /hub/es/topics
+- Frequent classes: `.es-review-score-btn` (654), `.es-topic-row` (109), `.es-review-topic-row` (109), `.es-review-score-wrap` (109), `.es-review-selected-wrap` (109), `.es-review-selected-value` (109), `.es-review-edit-wrap` (109), `.es-topic-content` (109), `.es-topic-top` (109), `.es-topic-state` (109), `.es-topic-preview` (109), `.estp-nav-link` (34), `.is-reviewed` (13), `.es-detail-stage` (4), `.estp-nav-section` (3), `.estp-nav-title` (3), `.estp-nav-summary` (3), `.estp-nav-links-wrap` (3)
+- Inline/page-local selectors: 64
+
+### `/hub/es/topics?space=emerging-standards&view=meetings`
+- Status: HTTP 200
+- Title: Emerging Standards Topics - InteropHub
+- Headings: Topic Spaces, Explore Topics, Meetings, Immunization CDS (ImmDS + HALO), Immunization Focus Group (IFG), Immunization Vocabularies Collaboration (IVC)
+- Forms: GET /hub/es/topics
+- Frequent classes: `.estp-nav-link` (34), `.es-topic-row` (4), `.es-review-topic-row` (4), `.es-review-score-wrap` (4), `.es-review-score-wrap-disabled` (4), `.es-topic-content` (4), `.es-topic-top` (4), `.es-topic-state` (4), `.es-topic-preview` (4), `.es-detail-stage` (4), `.estp-nav-section` (3), `.estp-nav-title` (3), `.estp-nav-summary` (3), `.estp-nav-links-wrap` (3), `.es-detail-comments-wrap` (3), `.es-detail-actions` (3), `.env-ribbon` (2), `.estp-nav-group` (2)
+- Inline/page-local selectors: 64
+
+### `/hub/es/topic/1`
+- Status: HTTP 200
+- Title: Immunization CDS (ImmDS + HALO) - InteropHub
+- Headings: Included In, Champion/Support & Admin View, Followers (39), Working Group Meeting Series, Meeting Appearances (4), Campaign Comments (0)
+- Forms: POST /hub/es/topics/relationship, POST /hub/es/topics/curation
+- Frequent classes: `.es-detail-stage` (4), `.es-detail-comments-wrap` (3), `.es-detail-actions` (3), `.env-ribbon` (2), `.es-topic-meta` (2), `.estd-shell` (1), `.estd-back` (1), `.es-topic-row` (1), `.es-detail-sheet` (1), `.es-detail-description` (1), `.es-detail-comments-list` (1), `.es-review-comment-label` (1), `.es-review-comment-input` (1), `.es-review-comment-status` (1), `.es-secondary-button` (1), `.legal-footer` (1)
+- Inline/page-local selectors: 7
+
+### `/hub/es/review/DD26`
+- Status: HTTP 200
+- Title: Emerging Standards Review - InteropHub
+- Headings: Emerging Standards Topic Review, Advanced Access, Bulk Data Exchange (FHIR Bulk Data), Event-Based Exchange (FHIR Subscriptions), IIS Metrics Access (IISAR), Population Analytics
+- Frequent classes: `.es-review-score-btn` (1056), `.es-topic-row` (176), `.es-review-topic-row` (176), `.es-review-score-wrap` (176), `.es-review-selected-wrap` (176), `.es-review-selected-value` (176), `.es-review-edit-wrap` (176), `.es-topic-content` (176), `.es-topic-top` (176), `.es-topic-state` (176), `.es-topic-preview` (176), `.es-stage-group` (57), `.es-topic-list` (57), `.is-reviewed` (23), `.es-neighborhood-group` (15), `.es-stage-title` (15), `.es-detail-stage` (3), `.es-topics-page` (1)
+
+### `/hub/es/cdc-review/DD26`
+- Status: HTTP 200
+- Title: CDC Topic Signals - InteropHub
+- Headings: CDC Topic Signals, Immunization CDS (ImmDS + HALO), Immunization CDS (ImmDS + HALO), Immunization Vocabularies Collaboration (IVC), Immunization Vocabularies Collaboration (IVC), CDC WSDL Authentication
+- Frequent classes: `.es-cdc-control-block` (252), `.es-cdc-control-label` (252), `.es-cdc-signal-btn` (252), `.js-cdc-signal` (252), `.es-topic-row` (84), `.es-cdc-topic-row` (84), `.es-cdc-topic-body` (84), `.es-topic-top` (84), `.es-topic-preview` (84), `.es-cdc-topic-meta` (84), `.es-cdc-meta-sep` (84), `.es-cdc-policy-badge` (84), `.js-cdc-policy-badge` (84), `.es-cdc-policy-note` (84), `.js-cdc-policy-note` (84), `.es-cdc-signal-buttons` (84), `.es-review-comment-input` (84), `.es-cdc-comment-input` (84)
+
+### `/hub/es/agenda?meetingId=12`
+- Status: HTTP 200
+- Title: ImmDS + HALO — Agenda
+- Headings: DRAFT AGENDA, Meeting Information, Attendance
+- Forms: POST /hub/es/agenda, POST /hub/es/agenda, POST /hub/es/agenda, POST /hub/es/agenda, POST /hub/es/agenda, POST /hub/es/agenda
+- Frequent classes: `.no-print` (24), `.click-to-edit` (12), `.agenda-status-btn` (10), `.role-option` (8), `.agenda-inline-form` (6), `.quick-pick-section` (6), `.quick-pick-label` (6), `.pres-role-input` (6), `.pres-text-input` (6), `.pres-btn` (6), `.agenda-meta-row` (5), `.agenda-meta-label` (4), `.pres-action-form` (4), `.prev-item-title` (4), `.prev-item-min` (4), `.prev-item-status` (4), `.prev-status-neutral` (4), `.prev-item-controls` (4)
+- Inline/page-local selectors: 226
+
+### `/hub/es/meetings?seriesId=3`
+- Status: HTTP 200
+- Title: ImmDS + HALO Meetings — InteropHub
+- Headings: ImmDS + HALO Meetings, Upcoming, Past Meetings
+- Frequent classes: `.mseries-row` (3), `.mseries-date` (3), `.mseries-date-date` (3), `.mseries-date-time` (3), `.mseries-name` (3), `.mseries-status` (3), `.mseries-badge` (3), `.mseries-badge-draft` (3), `.mseries-agenda` (3), `.mseries-agenda-link` (3), `.mseries-sep` (2), `.mseries-section` (2), `.mseries-section-heading` (2), `.mseries-table-wrap` (2), `.mseries-table` (2), `.mseries-row-upcoming` (2), `.mseries-page` (1), `.mseries-header` (1)
+- Inline/page-local selectors: 37
+
+### `/hub/es/meeting-poll?pollId=1`
+- Status: HTTP 200
+- Title: IFG Annual Participant Feedback Survey - InteropHub
+- Headings: IFG Annual Participant Feedback Survey, Your Availability, Results
+- Forms: POST /hub/es/meeting-poll, POST /hub/es/meeting-poll
+- Frequent classes: `.container` (1), `.data-table` (1), `.env-ribbon` (1), `.legal-footer` (1)
+
+## CSS Selectors
+
+- `:root`
+- `*`
+- `body`
+- `.container`
+- `h1`
+- `p`
+- `.login-page`
+- `.panel`
+- `.banner`
+- `.tagline`
+- `.section-title`
+- `.login-form`
+- `.login-form label`
+- `.login-form .field-error`
+- `.login-form .field-error-block`
+- `.login-form .field-hint`
+- `.login-form input`
+- `.login-form input[type="checkbox"]`
+- `.login-form input[type="radio"]`
+- `.login-form select`
+- `.login-form textarea`
+- `.login-form button`
+- `.login-form button:hover`
+- `.login-form button:disabled`
+- `.login-form .form-actions`
+- `.login-form .button-link`
+- `.login-form .button-link:hover`
+- `h2`
+- `ul`
+- `li`
+- `.data-table`
+- `.data-table th`
+- `.data-table td`
+- `.data-table th`
+- `.admin-table`
+- `.admin-table th`
+- `.admin-table td`
+- `.admin-table th`
+- `.admin-table tbody tr:nth-child(even)`
+- `.admin-table tbody tr:hover`
+- `.status-icon`
+- `.status-enabled`
+- `.status-disabled`
+- `.legal-footer`
+- `.container + .legal-footer`
+- `.login-page + .legal-footer`
+- `.doc-page`
+- `.doc-page + .legal-footer`
+- `.doc-section h2`
+- `.doc-section h3`
+- `.doc-section p + p`
+- `.doc-section p + ul`
+- `.doc-section p + ol`
+- `.doc-section ul + p`
+- `.doc-section ol + p`
+- `.doc-section ul + ul`
+- `.doc-section ol + ol`
+- `.doc-section ul + ol`
+- `.doc-section ol + ul`
+- `.doc-section .doc-code + p`
+- `.doc-section .doc-code + ul`
+- `.doc-section .doc-code + ol`
+- `.doc-section ol`
+- `.doc-section ul`
+- `.admin-shell`
+- `.admin-shell + .legal-footer`
+- `body.admin-page`
+- `.admin-rail`
+- `.admin-rail h1`
+- `.admin-rail-subtitle`
+- `.admin-nav-group`
+- `.admin-nav-group h2`
+- `.admin-nav-group ul`
+- `.admin-nav-group li`
+- `.admin-nav-group a`
+- `.admin-nav-group a:hover`
+- `.admin-rail-footer-link`
+- `.admin-main`
+- `.admin-main .panel`
+- `.container.admin-with-rail`
+- `.container.admin-with-rail + .legal-footer`
+- `.container.admin-with-rail > .admin-menu-panel`
+- `.container.admin-with-rail > :not(.admin-menu-panel)`
+- `.admin-menu-panel`
+- `.admin-nav-panel`
+- `.admin-menu-grid`
+- `.admin-menu-group`
+- `.admin-menu-group h3`
+- `.admin-menu-group ul`
+- `.admin-menu-group li`
+- `.admin-quick-links`
+- `.admin-quick-links li`
+- `.admin-pill`
+- `.admin-shell`
+- `.admin-rail`
+- `.container.admin-with-rail`
+- `.container.admin-with-rail > :not(.admin-menu-panel)`
+- `.container.admin-with-rail > .admin-menu-panel`
+- `.doc-section li`
+- `.doc-kicker`
+- `.doc-code`
+- `.doc-code code`
+- `.doc-section code`
+- `.checklist`
+- `.doc-index-grid`
+- `a.doc-card`
+- `.es-topics-page`
+- `.es-topics-header`
+- `.es-topics-header h1`
+- `.es-topics-campaign`
+- `.es-topics-search-label`
+- `.es-topics-search`
+- `.es-status-message`
+- `.es-topic-groups`
+- `.es-neighborhood-group`
+- `.es-stage-group`
+- `.es-topics-next-step`
+- `.es-topics-next-step p`
+- `.es-topics-help`
+- `.es-primary-cta`
+- `.es-primary-cta:hover`
+- `.es-primary-cta:focus-visible`
+- `.es-stage-title`
+- `.es-topic-list`
+- `.es-topic-row`
+- `.es-topic-row.is-selected`
+- `.es-topic-row.is-subscribed`
+- `.es-topic-row.is-meeting-registered`
+- `.es-topic-row.is-meeting-registered .es-topic-state`
+- `.es-review-topic-row.is-reviewed`
+- `.es-review-topic-row`
+- `.es-review-topic-row:not(.is-reviewed)`
+- `.es-review-topic-row.is-reviewed h3`
+- `.es-review-topic-row.is-reviewed .es-topic-preview`
+- `.es-topic-row.is-filtered-out`
+- `.es-review-scale-hint`
+- `.es-review-score-wrap`
+- `.es-review-selected-wrap`
+- `.es-review-selected-value`
+- `.es-review-edit-wrap`
+- `.es-review-score-btn`
+- `.es-review-score-btn:hover`
+- `.es-review-topic-row.is-reviewed .es-topic-state`
+- `.es-review-progress-footer`
+- `.es-review-comment-label`
+- `.es-review-comment-input`
+- `.es-review-comment-status`
+- `.es-cdc-review-page`
+- `.es-cdc-intro`
+- `.es-cdc-intro p`
+- `.es-cdc-topic-list`
+- `.es-cdc-topic-row`
+- `.es-cdc-topic-body`
+- `.es-cdc-topic-meta`
+- `.es-cdc-meta-sep`
+- `.es-cdc-control-block`
+- `.es-cdc-control-label`
+- `.es-cdc-signal-buttons`
+- `.es-cdc-signal-btn`
+- `.es-cdc-signal-btn:hover`
+- `.es-cdc-signal-btn.is-active`
+- `.es-cdc-signal-btn:disabled`
+- `.es-cdc-policy-action:disabled`
+- `.js-cdc-comment-save:disabled`
+- `.es-cdc-comment-actions`
+- `.es-cdc-policy-badge`
+- `.es-cdc-policy-note`
+- `.es-cdc-policy-action`
+- `.es-cdc-row-status`
+- `.es-cdc-row-status.is-error`
+- `.es-cdc-topic-row.is-cdc-policy-blocked`
+- `.es-cdc-topic-row.is-cdc-policy-blocked h3`
+- `.es-cdc-topic-row.is-cdc-policy-blocked .es-topic-preview`
+- `.es-cdc-topic-row.is-cdc-policy-blocked .es-cdc-topic-meta`
+- `.es-review-edit-wrap[hidden]`
+- `.es-review-selected-wrap[hidden]`
+- `.es-topic-state[hidden]`
+- `.es-topic-checkbox-wrap`
+- `.es-topic-checkbox`
+- `.es-topic-content`
+- `.es-topic-top`
+- `.es-topic-top h3`
+- `.es-topic-state`
+- `.es-topic-row.is-selected .es-topic-state`
+- `.es-topic-row.is-subscribed .es-topic-state`
+- `.es-vote-total`
+- `.es-topic-preview`
+- `.es-sticky-action`
+- `.es-sticky-action button`
+- `.es-sticky-action button:disabled`
+- `.es-detail-overlay`
+- `.es-confirm-overlay`
+- `.es-detail-sheet`
+- `.es-confirm-sheet`
+- `.es-detail-sheet h2`
+- `.es-confirm-sheet h2`
+- `.es-detail-stage`
+- `.es-detail-state`
+- `.es-detail-description`
+- `.es-detail-actions`
+- `.es-confirm-actions`
+- `.es-detail-actions button`
+- `.es-confirm-actions button`
+- `.es-confirm-actions a`
+- `.es-detail-actions button`
+- `.es-confirm-actions button`
+- `.es-secondary-button`
+- `.es-confirm-sheet label`
+- `.es-confirm-sheet input[type="email"]`
+- `.es-name-row`
+- `.es-name-row input[type="text"]`
+- `.es-checkbox-row`
+- `.es-checkbox-row input`
+- `.es-confirm-topic-list`
+- `.es-confirm-error`
+- `.es-vote-error`
+- `.es-table-results-actions`
+- `.es-table-results-actions .es-secondary-button`
+- `.es-reg-wrap`
+- `.es-reg-grid`
+- `.es-reg-left`
+- `.es-reg-right`
+- `.es-reg-count`
+- `.es-reg-names`
+- `.es-reg-mode-badge`
+- `.es-reg-cleanup`
+- `.es-reg-cleanup h2`
+- `.es-reg-cleanup-confirm`
+- `.es-reg-cleanup-confirm input`
+- `.es-refresh-floating`
+- `.es-refresh-switch`
+- `.es-refresh-switch input`
+- `.es-refresh-slider`
+- `.es-refresh-slider::before`
+- `.es-refresh-switch input:checked + .es-refresh-slider`
+- `.es-refresh-switch input:checked + .es-refresh-slider::before`
+- `.es-refresh-hint`
+- `.es-round-current`
+- `.es-round-header`
+- `.es-table-health-wrap`
+- `.attend-page`
+- `.attend-heading`
+- `.attend-description`
+- `.attend-success-msg`
+- `.attend-form`
+- `.attend-form label`
+- `.attend-form input[type="text"]`
+- `.attend-form input[type="email"]`
+- `.attend-form input[type="text"]:focus`
+- `.attend-form input[type="email"]:focus`
+- `.attend-required`
+- `.attend-error`
+- `.attend-logged-in-notice`
+- `.attend-mode-toggle`
+- `.attend-action-fieldset`
+- `.attend-action-fieldset legend`
+- `.attend-radio-label`
+- `.attend-checkbox-row`
+- `.attend-checkbox-label`
+- `.attend-checkbox-label input[type="checkbox"]`
+- `.attend-topic-interest`
+- `.attend-topic-interest-label`
+- `.attend-topic-list`
+- `.attend-topic-item`
+- `.attend-topic-label`
+- `.attend-champion-badge`
+- `.attend-hope-textarea`
+- `.attend-hope-textarea:focus`
+- `.attend-submit-btn`
+- `.attend-submit-btn:hover`
+- `.attend-attendees-section`
+- `.attend-attendees-heading`
+- `.attend-no-attendees`
+- `.attend-attendee-table`
+- `.attend-attendee-table th`
+- `.attend-attendee-table td`
+- `.env-ribbon`
+- `.attend-attendee-table th`
+- `.attend-attendee-table tbody tr:nth-child(even)`
+- `.attend-hopes-section`
+- `.attend-hopes-heading`
+- `.attend-hopes-list`
+- `.attend-hopes-list li`
+- `.es-table-health-table th`
+- `.es-table-health-table td`
+- `.es-table-health-table th:first-child`
+- `.es-table-health-table td:first-child`
+- `.es-table-health-cell`
+- `.es-table-health-dot`
+- `.es-table-health-value`
+- `.es-round-controls`
+- `.es-round-controls button`
+- `.es-round-table-wrap`
+- `.es-round-table th`
+- `.es-round-table td`
+- `.es-round-table td:first-child`
+- `.es-round-table th:first-child`
+- `.es-round-table th:first-child`
+- `.es-current-round`
+- `.es-reg-grid`
+- `.es-reg-count`
+- `body.es-sheet-open`
+- `body.es-confirm-open`
+- `.es-topics-page`
+- `.es-sticky-action`
+- `.es-detail-sheet`
+- `.es-confirm-sheet`
+- `a.doc-card:hover`
+- `a.doc-card .doc-kicker`
+- `a.doc-card h2`
+- `a.doc-card p:last-child`
+- `.doc-section table`
+- `.doc-section th`
+- `.doc-section td`
+- `.doc-section th`
+- `.legal-footer p`
+- `.legal-footer p + p`
+- `.legal-footer a`
+- `.stat-cards`
+- `.stat-card`
+- `.stat-card-value`
+- `.stat-card-label`
