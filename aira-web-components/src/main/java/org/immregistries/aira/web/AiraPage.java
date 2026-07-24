@@ -72,7 +72,8 @@ public final class AiraPage {
     writer.println("  <meta charset=\"UTF-8\">");
     writer.println("  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
     writer.println("  <title>" + HtmlEscaper.escapeText(documentTitle) + "</title>");
-    writer.println("  <link rel=\"stylesheet\" href=\"" + HtmlEscaper.escapeAttribute(resolvePath("/aira/css/aira.css")) + "\">");
+    writer.println("  <link rel=\"stylesheet\" href=\""
+        + HtmlEscaper.escapeAttribute(resolvePath(AiraDefaults.STYLESHEET_PATH)) + "\">");
     for (String stylesheet : localStylesheets) {
       writer.println("  <link rel=\"stylesheet\" href=\"" + HtmlEscaper.escapeAttribute(resolvePath(stylesheet)) + "\">");
     }

@@ -20,7 +20,8 @@ class AiraPageTest {
         .addLocalStylesheet("/css/extra.css")
         .build());
 
-    assertTrue(html.indexOf("/demo/aira/css/aira.css") < html.indexOf("/demo/css/application.css"));
+    assertTrue(html.indexOf("/demo" + AiraDefaults.STYLESHEET_PATH)
+        < html.indexOf("/demo/css/application.css"));
     assertTrue(html.indexOf("/demo/css/application.css") < html.indexOf("/demo/css/extra.css"));
   }
 
@@ -32,7 +33,7 @@ class AiraPageTest {
         .context("Workspace", List.of(new AiraNavigationItem("Home", "/", true)))
         .build());
 
-    assertTrue(html.contains("href=\"/aira/css/aira.css\""));
+    assertTrue(html.contains("href=\"" + AiraDefaults.STYLESHEET_PATH + "\""));
     assertTrue(html.contains("href=\"/css/application.css\""));
     assertTrue(html.contains("href=\"/\" aria-current=\"page\""));
   }
@@ -45,7 +46,7 @@ class AiraPageTest {
         .context("Workspace", List.of(new AiraNavigationItem("Home", "/", true)))
         .build());
 
-    assertTrue(html.contains("href=\"/aira-web-demo/aira/css/aira.css\""));
+    assertTrue(html.contains("href=\"/aira-web-demo" + AiraDefaults.STYLESHEET_PATH + "\""));
     assertTrue(html.contains("href=\"/aira-web-demo/css/application.css\""));
     assertTrue(html.contains("href=\"/aira-web-demo/\" aria-current=\"page\""));
   }
@@ -88,6 +89,15 @@ class AiraPageTest {
     assertTrue(html.contains("class=\"aira-account-label\">Nathan</span>"));
     assertTrue(html.contains("href=\"/logout\">Sign out</a>"));
     assertTrue(html.contains("class=\"aira-environment-badge\" title=\"Local development environment\">Local</span>"));
+  }
+
+  @Test
+  void tertiaryGlobalActionVariantIsAllowed() {
+    String html = render(pageBuilder()
+        .addGlobalAction("Details", "/details", "tertiary")
+        .build());
+
+    assertTrue(html.contains("class=\"aira-button aira-button--tertiary\" href=\"/details\""));
   }
 
   @Test

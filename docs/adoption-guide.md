@@ -34,6 +34,7 @@ The theme JAR contains:
 
 ```text
 META-INF/resources/aira/css/aira.css
+META-INF/resources/aira/images/AIRA_2018Logo_BlueGreen_Hor.png
 ```
 
 When the JAR is in `WEB-INF/lib`, request:
@@ -48,6 +49,45 @@ Load application CSS after the shared theme:
 <link rel="stylesheet" href="{contextPath}/aira/css/aira.css">
 <link rel="stylesheet" href="{contextPath}/css/application.css">
 ```
+
+## Canonical Resource Paths
+
+| Resource | Request path | Public contract |
+|---|---|---|
+| Shared stylesheet | `{contextPath}/aira/css/aira.css` | Stable first-release path. In Java, use `AiraDefaults.STYLESHEET_PATH`. |
+| Default horizontal AIRA logo | `{contextPath}/aira/images/AIRA_2018Logo_BlueGreen_Hor.png` | Stable first-release path for the packaged default logo. In Java, use `AiraDefaults.DEFAULT_LOGO_PATH`. |
+
+Other files under `/aira/` should be treated as internal unless the documentation explicitly lists them as public.
+
+## Logo Integration
+
+The packaged default logo is not automatically selected, because some applications may need a different approved asset or a dark-background variant later. Configure the default logo explicitly when building the shell:
+
+```java
+AiraPage page = AiraPage.builder()
+    .applicationName("InteropHub")
+    .applicationVersion(applicationVersion)
+    .documentTitle("AIRA Web Demo")
+    .contextPath(request.getContextPath())
+    .logo(new AiraLogo(AiraDefaults.DEFAULT_LOGO_PATH, AiraDefaults.DEFAULT_LOGO_ALT_TEXT))
+    .build();
+```
+
+This resolves to:
+
+```html
+<img class="aira-logo"
+     src="{contextPath}/aira/images/AIRA_2018Logo_BlueGreen_Hor.png"
+     alt="American Immunization Registry Association">
+```
+
+If `.logo(...)` is omitted, `AiraPage` renders a small text placeholder. That fallback prevents broken markup during early development, but applications should configure an approved logo before release.
+
+Alt text guidance:
+
+- Use the organization name for the default logo: `American Immunization Registry Association`.
+- Keep alt text concise.
+- Do not describe visual colors or shapes unless that information is meaningful to the task.
 
 ## Recommended Shell Structure
 
@@ -69,6 +109,7 @@ AiraPage page = AiraPage.builder()
     .documentTitle("Topics - InteropHub")
     .contextPath(request.getContextPath())
     .identityHref("/")
+    .logo(new AiraLogo(AiraDefaults.DEFAULT_LOGO_PATH, AiraDefaults.DEFAULT_LOGO_ALT_TEXT))
     .search(new AiraSearchConfig("/search", "q", "Search", "Search topics"))
     .addGlobalAction("Explore", "/", "secondary")
     .account(new AiraAccountConfig("Signed in user", "Account", "/account"))
@@ -90,6 +131,29 @@ page.writeEnd(writer);
 The stable public CSS contract is the `aira-` class namespace and the CSS custom properties. The theme provides component categories for shell, layout, typography, buttons, forms, badges, cards, choice rows, event lists, tables, alerts, management layouts, footer, and small utilities.
 
 Applications may add local classes for domain-specific composition. They should not duplicate or redefine the shared shell, footer, brand tokens, button system, form controls, or table baseline.
+
+First-release shared variants include:
+
+| Component | Public variants |
+|---|---|
+| Buttons | `aira-button--primary`, `aira-button--secondary`, `aira-button--tertiary`, `aira-button--success`, `aira-button--danger`, `aira-button--ghost`, `aira-button--link`, `aira-button--small`, `aira-button--icon` |
+| Badges | `aira-badge`, `aira-badge--outline`, `aira-badge--subtle`, `aira-badge--info`, `aira-badge--success`, `aira-badge--warning`, `aira-badge--danger` |
+
+Use `aira-button--tertiary` for low-emphasis actions that should still look like actionable controls. It is appropriate for preview, refresh, view details, or optional workflow actions that need more presence than `aira-button--link` but less emphasis than `aira-button--secondary`.
+
+Use `aira-badge--subtle` for secondary metadata and low-emphasis status labels. It should read softer than `info`, `success`, `warning`, or `danger` while retaining readable text contrast in the light theme.
+
+Prefer shared badge variants before defining local status colors. Recommended baseline mapping:
+
+| Domain status meaning | Recommended shared badge variant |
+|---|---|
+| Neutral or draft | `aira-badge--outline` or `aira-badge--subtle` |
+| Informational or proposed | `aira-badge--info` |
+| Positive, accepted, or finalized | `aira-badge--success` |
+| Caution, needs revision, or postponed | `aira-badge--warning` |
+| Negative, cancelled, or blocked | `aira-badge--danger` |
+
+This mapping is presentation guidance only. Applications should keep domain-specific status logic in application code.
 
 ## Application-Specific Behavior
 

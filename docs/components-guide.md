@@ -16,6 +16,16 @@ It does not provide a base servlet and does not render page-specific business co
 - `AiraNavigationItem` - contextual navigation link with active/current state.
 - `AiraFooterConfig` - optional footer URL/year overrides.
 
+## Default Resource Constants
+
+`AiraDefaults` includes constants for public resource paths so applications do not need to hard-code filenames:
+
+- `AiraDefaults.STYLESHEET_PATH` - `/aira/css/aira.css`
+- `AiraDefaults.DEFAULT_LOGO_PATH` - `/aira/images/AIRA_2018Logo_BlueGreen_Hor.png`
+- `AiraDefaults.DEFAULT_LOGO_ALT_TEXT` - `American Immunization Registry Association`
+
+The `AiraPage` renderer uses `AiraDefaults.STYLESHEET_PATH` automatically. Applications should use `AiraDefaults.DEFAULT_LOGO_PATH` when they want the packaged default logo.
+
 ## Example
 
 ```java
@@ -26,6 +36,7 @@ AiraPage page = AiraPage.builder()
     .documentTitle("Dashboard")
     .contextPath(request.getContextPath())
     .identityHref("/")
+    .logo(new AiraLogo(AiraDefaults.DEFAULT_LOGO_PATH, AiraDefaults.DEFAULT_LOGO_ALT_TEXT))
     .addGlobalAction("Explore", "/", "secondary")
     .search(new AiraSearchConfig("/search", "q", "Search", "Search records"))
     .account(new AiraAccountConfig("Signed in user", "Account", "/account"))
@@ -40,6 +51,22 @@ page.writeStart(writer);
 renderApplicationContent(writer);
 page.writeEnd(writer);
 ```
+
+## Logo Behavior
+
+`AiraLogo` is optional. If omitted, the shell renders a compact text placeholder so the header remains structurally valid. For real application pages, configure an approved logo:
+
+```java
+.logo(new AiraLogo(AiraDefaults.DEFAULT_LOGO_PATH, AiraDefaults.DEFAULT_LOGO_ALT_TEXT))
+```
+
+The logo source is resolved through the configured servlet context path. With a context path of `/hub`, the default logo is requested from:
+
+```text
+/hub/aira/images/AIRA_2018Logo_BlueGreen_Hor.png
+```
+
+Use concise alt text that identifies the organization. The default constant is appropriate for the packaged horizontal AIRA logo.
 
 ## Output Responsibilities
 
@@ -83,6 +110,50 @@ The renderer only emits the shell. Page content should use the shared `aira-` CS
 - Alerts.
 - Management sidebars/layouts.
 - Utilities.
+
+### Buttons and Actions
+
+Use shared button variants before defining application-specific action colors:
+
+| Variant | Intended use |
+|---|---|
+| `aira-button--primary` | Main action for the page or workflow step. |
+| `aira-button--secondary` | Standard alternative action with clear affordance. |
+| `aira-button--tertiary` | Low-emphasis action that should still read as a button, more visible than link style and less dominant than secondary. |
+| `aira-button--ghost` | Quiet action inside dense toolbars or secondary action groups. |
+| `aira-button--link` | Inline or text-like action where button chrome would add too much weight. |
+| `aira-button--success` | Explicit positive/confirming action when the action outcome is semantic. |
+| `aira-button--danger` | Destructive or negative action. |
+
+Button variants work on both native buttons and links:
+
+```html
+<button class="aira-button aira-button--tertiary" type="button">Preview</button>
+<a class="aira-button aira-button--tertiary" href="/reports">Open report</a>
+```
+
+### Badges and Status Guidance
+
+Use shared badge variants for status labels and secondary metadata before defining local status colors. The CSS contract includes `aira-badge`, `aira-badge--outline`, `aira-badge--subtle`, `aira-badge--info`, `aira-badge--success`, `aira-badge--warning`, and `aira-badge--danger`.
+
+`aira-badge--subtle` is for low-emphasis metadata, counts, secondary state, or labels that should read softer than semantic information, success, warning, or danger.
+
+```html
+<span class="aira-badge aira-badge--subtle">Draft</span>
+<span class="aira-badge aira-badge--info">Proposed</span>
+```
+
+Recommended baseline status mapping:
+
+| Domain status meaning | Recommended shared badge variant |
+|---|---|
+| Neutral or draft | `aira-badge--outline` or `aira-badge--subtle` |
+| Informational or proposed | `aira-badge--info` |
+| Positive, accepted, or finalized | `aira-badge--success` |
+| Caution, needs revision, or postponed | `aira-badge--warning` |
+| Negative, cancelled, or blocked | `aira-badge--danger` |
+
+This mapping is guidance for consistent presentation. Applications remain responsible for their own domain logic and status text.
 
 ## Deliberately Not Included
 

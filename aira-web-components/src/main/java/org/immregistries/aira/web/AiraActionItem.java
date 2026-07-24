@@ -5,7 +5,7 @@ package org.immregistries.aira.web;
  *
  * @param label visible text
  * @param href destination URL
- * @param variant button variant such as primary, secondary, ghost, or link
+ * @param variant button variant such as primary, secondary, tertiary, ghost, or link
  */
 public record AiraActionItem(String label, String href, String variant) {
   /**
@@ -20,11 +20,11 @@ public record AiraActionItem(String label, String href, String variant) {
     href = Validation.requireText(href, "href");
     variant = Validation.optionalText(variant).orElse("ghost");
     switch (variant) {
-      case "primary", "secondary", "success", "danger", "ghost", "link" -> {
+      case "primary", "secondary", "tertiary", "success", "danger", "ghost", "link" -> {
         // Valid variant.
       }
       default -> throw new IllegalArgumentException(
-          "variant must be one of: primary, secondary, success, danger, ghost, link");
+          "variant must be one of: primary, secondary, tertiary, success, danger, ghost, link");
     }
   }
 }

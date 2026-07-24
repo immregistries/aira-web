@@ -6,7 +6,7 @@ This repository provides a first usable shared design-system release for AIRA ap
 
 ## Modules
 
-- `aira-web-theme` - JAR containing shared static resources under `META-INF/resources/aira/`, including `META-INF/resources/aira/css/aira.css`.
+- `aira-web-theme` - JAR containing shared static resources under `META-INF/resources/aira/`, including `META-INF/resources/aira/css/aira.css` and the default AIRA logo image.
 - `aira-web-components` - plain Java JAR for rendering the document head, shared stylesheet links, global header, optional contextual header/navigation, main content opening, and required footer.
 - `aira-web-demo` - WAR demonstrating a servlet-only application that consumes `aira-web-components`; it does not copy the shared theme CSS.
 - `docs/` - standards, adoption guidance, and component usage guidance.
@@ -60,15 +60,38 @@ Application CSS may be loaded afterward for domain-specific composition:
 
 Application CSS should not redefine AIRA brand tokens, the base shell, footer, form controls, primary buttons, or shared component classes.
 
+## Public Resource Contract
+
+These resource paths are intended for downstream applications to reference through their servlet context path after depending on `aira-web-theme` or `aira-web-components`.
+
+| Resource | Path | Contract |
+|---|---|---|
+| Shared stylesheet | `/aira/css/aira.css` | Public, stable first-release path. Also available as `AiraDefaults.STYLESHEET_PATH`. |
+| Default horizontal AIRA logo | `/aira/images/AIRA_2018Logo_BlueGreen_Hor.png` | Public first-release path for the packaged default logo. Also available as `AiraDefaults.DEFAULT_LOGO_PATH`. Filename may change only with a documented breaking release. |
+
+When using `aira-web-components`, prefer the constants in `AiraDefaults` rather than hard-coding these paths.
+
+## Logo Integration
+
+The theme packages the default horizontal blue/green AIRA logo. Applications that use the Java shell renderer should configure it explicitly:
+
+```java
+.logo(new AiraLogo(AiraDefaults.DEFAULT_LOGO_PATH, AiraDefaults.DEFAULT_LOGO_ALT_TEXT))
+```
+
+If no logo is configured, `AiraPage` renders a small text placeholder. That fallback is useful during early development but should not be treated as the preferred production identity.
+
+Use concise alt text that identifies the organization, such as `American Immunization Registry Association`. Do not include words like "logo" unless needed to distinguish the image's purpose in context.
+
 ## First-Release Component Categories
 
 The shared CSS includes:
 
 - Two-level shell: global header, identity, search, actions, account area, environment badge, contextual title/navigation.
 - Layout primitives: standard/narrow/wide containers, stacks, clusters, responsive grids, card grids, sidebar layouts, split layouts, toolbars, reading width.
-- Buttons and action areas: primary, secondary, success, danger, ghost, link, small, icon-compatible, grouped, responsive, and sticky actions.
+- Buttons and action areas: primary, secondary, tertiary, success, danger, ghost, link, small, icon-compatible, grouped, responsive, and sticky actions.
 - Forms: form containers, field rows, fieldsets, native checkboxes/radios, search fields, switches, segmented/rating/chip controls, inline forms, action areas, help, errors, and error summaries.
-- Badges, tags, status text, and status dots.
+- Badges, tags, status text, and status dots, including subtle, outline, info, success, warning, and danger badge variants.
 - Panels, cards, interactive cards, choice rows, resource-card structure, and empty states.
 - Event lists for meetings, workshops, webinars, and other dated events.
 - Tables with overflow wrappers and compact density.
@@ -88,6 +111,5 @@ AIRA Web does not provide JavaScript behavior, menus, dialogs, bottom sheets, dr
 
 ## Known Missing Items
 
-- Approved AIRA logo assets are not present in this repository. The demo uses the text logo placeholder emitted by the component library.
 - Local Open Sans font packaging is not implemented yet. The CSS uses `"Open Sans", Arial, sans-serif` without a runtime network dependency.
 - Dialogs, bottom sheets, menus, and shared JavaScript behavior are intentionally deferred.

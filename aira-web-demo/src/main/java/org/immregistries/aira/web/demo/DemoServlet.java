@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Properties;
 import org.immregistries.aira.web.AiraAccountConfig;
+import org.immregistries.aira.web.AiraDefaults;
 import org.immregistries.aira.web.AiraContextConfig;
 import org.immregistries.aira.web.AiraEnvironmentConfig;
 import org.immregistries.aira.web.AiraLogo;
@@ -48,8 +49,7 @@ public class DemoServlet extends HttpServlet {
         .documentTitle(title + " - AIRA Web Demo")
         .contextPath(request.getContextPath())
         .identityHref("/")
-        .logo(new AiraLogo("/aira/images/AIRA_2018Logo_BlueGreen_Hor.png",
-            "American Immunization Registry Association"))
+        .logo(new AiraLogo(AiraDefaults.DEFAULT_LOGO_PATH, AiraDefaults.DEFAULT_LOGO_ALT_TEXT))
         .search(new AiraSearchConfig("/components", "q", "Search InteropHub", "Search topics or meetings"))
         .addGlobalAction("Explore", "/", "secondary")
         .account(new AiraAccountConfig("Nathan Bunker", "Account", "/signin"))
@@ -223,8 +223,8 @@ public class DemoServlet extends HttpServlet {
       page.writeStart(out);
       out.println("    <div class=\"aira-container--wide aira-stack aira-stack--loose\">");
       out.println("      <header><h1 class=\"aira-page-title\">Component reference</h1><p class=\"aira-page-intro\">First-release AIRA Web component variants for servlet-generated pages.</p></header>");
-      out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Buttons</h2><div class=\"aira-action-group\"><button class=\"aira-button aira-button--primary\">Primary</button><button class=\"aira-button aira-button--secondary\">Secondary</button><button class=\"aira-button aira-button--success\">Success</button><button class=\"aira-button aira-button--danger\">Danger</button><button class=\"aira-button aira-button--ghost\">Ghost</button><button class=\"aira-button aira-button--small\">Small</button><button class=\"aira-button aira-button--icon\" aria-label=\"Add\">+</button></div></section>");
-      out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Badges and tags</h2><div class=\"aira-tag-list\"><span class=\"aira-badge\">Neutral</span><span class=\"aira-badge aira-badge--info\">Info</span><span class=\"aira-badge aira-badge--success\">Success</span><span class=\"aira-badge aira-badge--warning\">Warning</span><span class=\"aira-badge aira-badge--danger\">Danger</span><span class=\"aira-tag aira-tag--outline\">Outline tag</span></div></section>");
+      out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Buttons</h2><div class=\"aira-action-group\"><button class=\"aira-button aira-button--primary\">Primary</button><button class=\"aira-button aira-button--secondary\">Secondary</button><button class=\"aira-button aira-button--tertiary\">Tertiary</button><button class=\"aira-button aira-button--success\">Success</button><button class=\"aira-button aira-button--danger\">Danger</button><button class=\"aira-button aira-button--ghost\">Ghost</button><a class=\"aira-button aira-button--tertiary\" href=\"#topics\">Tertiary link</a><button class=\"aira-button aira-button--small\">Small</button><button class=\"aira-button aira-button--icon\" aria-label=\"Add\">+</button></div></section>");
+      out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Badges and tags</h2><div class=\"aira-tag-list\"><span class=\"aira-badge\">Neutral</span><span class=\"aira-badge aira-badge--subtle\">Subtle</span><span class=\"aira-badge aira-badge--info\">Info</span><span class=\"aira-badge aira-badge--success\">Success</span><span class=\"aira-badge aira-badge--warning\">Warning</span><span class=\"aira-badge aira-badge--danger\">Danger</span><span class=\"aira-tag aira-tag--outline\">Outline tag</span></div></section>");
       renderManagementForm(out, request.getContextPath());
       out.println("      <section class=\"aira-alert aira-alert--info\"><p class=\"aira-alert__title\">Information alert</p><p>Alerts use pale semantic surfaces and a strong left border.</p></section>");
       renderFeaturedCards(out);

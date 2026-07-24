@@ -576,6 +576,24 @@ button, input, select, textarea {
   background: var(--aira-background);
 }
 
+.aira-button--tertiary,
+.aira-main a.aira-button--tertiary {
+  color: var(--aira-text);
+  background: var(--aira-surface-muted);
+  border-color: var(--aira-border-subtle);
+}
+
+.aira-button--tertiary:hover,
+.aira-main a.aira-button--tertiary:hover {
+  background: var(--aira-row-hover);
+  border-color: var(--aira-border-strong);
+}
+
+.aira-button--tertiary:focus-visible,
+.aira-main a.aira-button--tertiary:focus-visible {
+  border-color: var(--aira-focus-ring);
+}
+
 .aira-button--success,
 .aira-main a.aira-button--success {
   color: var(--aira-white);
@@ -850,6 +868,12 @@ button, input, select, textarea {
 .aira-tag--outline {
   background: transparent;
   border-color: var(--aira-border-strong);
+}
+
+.aira-badge--subtle {
+  background: var(--aira-surface-muted);
+  color: var(--aira-text-muted);
+  border-color: var(--aira-border-subtle);
 }
 
 .aira-badge--info,

@@ -5,6 +5,15 @@ package org.immregistries.aira.web;
  */
 public final class AiraDefaults {
 
+  /** Public resource path for the shared AIRA stylesheet. */
+  public static final String STYLESHEET_PATH = "/aira/css/aira.css";
+
+  /** Public resource path for the packaged default horizontal AIRA logo. */
+  public static final String DEFAULT_LOGO_PATH = "/aira/images/AIRA_2018Logo_BlueGreen_Hor.png";
+
+  /** Recommended alternative text for the packaged default AIRA logo. */
+  public static final String DEFAULT_LOGO_ALT_TEXT = "American Immunization Registry Association";
+
   /** Official AIRA website URL. */
   public static final String AIRA_WEBSITE_URL = "https://www.immregistries.org/";
 
@@ -30,4 +39,3 @@ public final class AiraDefaults {
   private AiraDefaults() {
   }
 }
-
