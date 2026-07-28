@@ -22,6 +22,8 @@ mvn clean verify
 
 The project is configured for Java 17. Plugin and dependency versions are managed from the parent POM.
 
+The public theme stylesheet is generated during the `aira-web-theme` build from topical source files in `aira-web-theme/src/main/theme-css/`. Downstream applications should continue to load only the generated `/aira/css/aira.css` resource.
+
 ## Run the Demo
 
 Run the demo locally with Jetty:

@@ -1,0 +1,36 @@
+/* 15. Alerts */
+.aira-alert {
+  padding: var(--aira-panel-padding);
+  border-left: 4px solid;
+  border-radius: var(--aira-radius-control);
+}
+
+.aira-alert__title {
+  margin: 0 0 var(--aira-space-1);
+  font-weight: 600;
+}
+
+.aira-alert p {
+  margin: 0;
+}
+
+.aira-alert--info {
+  background: var(--aira-info-surface);
+  border-color: var(--aira-focus);
+}
+
+.aira-alert--success {
+  background: var(--aira-success-surface);
+  border-color: var(--aira-success);
+}
+
+.aira-alert--warning {
+  background: var(--aira-warning-surface);
+  border-color: var(--aira-yellow);
+  color: var(--aira-warning-text);
+}
+
+.aira-alert--error {
+  background: var(--aira-error-surface);
+  border-color: var(--aira-danger);
+}

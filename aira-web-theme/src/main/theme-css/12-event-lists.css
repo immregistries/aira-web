@@ -1,0 +1,56 @@
+/* 12. Event Lists */
+.aira-event-section {
+  display: grid;
+  gap: var(--aira-section-gap);
+}
+
+.aira-event-section__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.aira-event-list {
+  display: grid;
+  gap: var(--aira-section-gap);
+}
+
+.aira-event-row {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) auto;
+  gap: var(--aira-section-gap);
+  align-items: center;
+  padding: var(--aira-panel-padding);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-card);
+  background: var(--aira-surface);
+}
+
+.aira-event-row--past {
+  background: var(--aira-surface-muted);
+}
+
+.aira-event-date {
+  display: grid;
+  gap: 0.125rem;
+  color: var(--aira-text);
+  font-weight: 700;
+}
+
+.aira-event-time {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--aira-text-secondary);
+}
+
+.aira-event-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.aira-event-meta,
+.aira-event-description {
+  margin: var(--aira-space-1) 0 0;
+  color: var(--aira-text-secondary);
+}

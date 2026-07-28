@@ -1,0 +1,50 @@
+/* 5. Contextual Navigation */
+.aira-context-header {
+  background: var(--aira-navy);
+  color: var(--aira-white);
+}
+
+.aira-context-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--aira-space-4);
+  width: min(100%, var(--aira-page-wide));
+  margin: 0 auto;
+  padding: var(--aira-space-2) var(--aira-space-4);
+}
+
+.aira-context-title {
+  min-width: 14rem;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.aira-context-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--aira-space-1);
+  min-height: var(--aira-context-nav-height);
+  overflow-x: auto;
+}
+
+.aira-context-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 var(--aira-space-2);
+  border-radius: var(--aira-radius-control);
+  color: var(--aira-white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.aira-context-nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.aira-context-nav a[aria-current="page"] {
+  background: var(--aira-white);
+  color: var(--aira-navy);
+}

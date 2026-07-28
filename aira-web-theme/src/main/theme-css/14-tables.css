@@ -1,0 +1,176 @@
+/* 14. Tables */
+.aira-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.aira-table-scroll {
+  max-width: 100%;
+  max-height: 24rem;
+  overflow: auto;
+}
+
+.aira-table-panel {
+  overflow: hidden;
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-panel);
+  background: var(--aira-surface);
+}
+
+.aira-table-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--aira-section-gap);
+  padding: var(--aira-panel-padding);
+  border-bottom: 1px solid var(--aira-border-subtle);
+}
+
+.aira-table-panel__title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.aira-table-panel__description {
+  margin: var(--aira-space-1) 0 0;
+  color: var(--aira-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.aira-table-panel__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}
+
+.aira-table-panel__body {
+  min-width: 0;
+}
+
+.aira-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--aira-surface);
+  color: var(--aira-text);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.aira-table th {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid var(--aira-border-strong);
+  background: var(--aira-surface-muted);
+  color: var(--aira-text);
+  text-align: left;
+  vertical-align: bottom;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.aira-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--aira-border-subtle);
+  vertical-align: top;
+}
+
+.aira-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.aira-table tbody tr:nth-child(even) {
+  background: var(--aira-surface-muted);
+}
+
+.aira-table tbody tr:hover {
+  background: var(--aira-row-hover);
+}
+
+.aira-table tbody tr[aria-selected="true"],
+.aira-table tbody tr.is-selected {
+  background: var(--aira-surface-selected);
+}
+
+.aira-table__cell--primary {
+  font-weight: 700;
+}
+
+.aira-table__cell--secondary {
+  color: var(--aira-text-secondary);
+}
+
+.aira-table__cell--numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.aira-table__cell--date,
+.aira-table__cell--nowrap {
+  white-space: nowrap;
+}
+
+.aira-table__cell--actions {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.aira-table__cell--code {
+  font-family: var(--aira-font-mono);
+  font-size: 0.75rem;
+}
+
+.aira-table__cell--wrap {
+  min-width: 16rem;
+  white-space: normal;
+}
+
+.aira-table--brand-header th {
+  background: var(--aira-navy);
+  color: var(--aira-white);
+  border-bottom-color: var(--aira-navy);
+}
+
+.aira-table--brand-header th a,
+.aira-table--brand-header th button {
+  color: inherit;
+}
+
+.aira-table__sort,
+.aira-main a.aira-table__sort,
+.aira-table__sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aira-space-1);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.aira-table__sort:hover,
+.aira-main a.aira-table__sort:hover,
+.aira-table__sort-button:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.aira-table--sticky-header thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.aira-table__empty {
+  padding: var(--aira-space-6);
+  color: var(--aira-text-secondary);
+  text-align: center;
+}

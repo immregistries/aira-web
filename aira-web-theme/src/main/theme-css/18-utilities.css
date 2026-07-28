@@ -1,0 +1,29 @@
+/* 18. Utilities */
+.aira-muted {
+  color: var(--aira-text-secondary) !important;
+}
+
+.aira-danger-text {
+  color: var(--aira-danger) !important;
+}
+
+.aira-full-width {
+  width: 100% !important;
+}
+
+.aira-align-end {
+  margin-left: auto !important;
+}
+
+.aira-scroll-region {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.aira-no-print {
+  print-color-adjust: exact;
+}
+
+.aira-print-only {
+  display: none !important;
+}

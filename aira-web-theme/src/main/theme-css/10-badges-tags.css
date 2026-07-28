@@ -1,0 +1,75 @@
+/* 10. Badges and Tags */
+.aira-badge,
+.aira-tag,
+.aira-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aira-space-1);
+  width: fit-content;
+  max-width: 100%;
+  min-height: 1.5rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--aira-radius-pill);
+  background: var(--aira-surface-muted);
+  color: var(--aira-text);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.aira-badge--outline,
+.aira-tag--outline {
+  background: transparent;
+  border-color: var(--aira-border-strong);
+}
+
+.aira-badge--subtle {
+  background: var(--aira-surface-muted);
+  color: var(--aira-text-muted);
+  border-color: var(--aira-border-subtle);
+}
+
+.aira-badge--info,
+.aira-tag--info,
+.aira-status--info {
+  background: var(--aira-info-surface);
+  color: var(--aira-info);
+  border-color: #b7d7ec;
+}
+
+.aira-badge--success,
+.aira-tag--success,
+.aira-status--success {
+  background: var(--aira-success-surface);
+  color: var(--aira-success);
+  border-color: #b7dbc6;
+}
+
+.aira-badge--warning,
+.aira-tag--warning,
+.aira-status--warning {
+  background: var(--aira-warning-surface);
+  color: var(--aira-warning-text);
+  border-color: #edd675;
+}
+
+.aira-badge--danger,
+.aira-tag--danger,
+.aira-status--danger {
+  background: var(--aira-error-surface);
+  color: var(--aira-danger);
+  border-color: #efb3ad;
+}
+
+.aira-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}
+
+.aira-status-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: currentColor;
+}

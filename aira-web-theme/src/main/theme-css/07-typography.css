@@ -1,0 +1,94 @@
+/* 7. Typography */
+.aira-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--aira-section-gap);
+  margin-bottom: var(--aira-section-gap);
+}
+
+.aira-page-title {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.15;
+  font-weight: 600;
+  color: var(--aira-text);
+}
+
+.aira-public-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.12;
+  font-weight: 400;
+  color: var(--aira-text);
+}
+
+.aira-page-intro,
+.aira-public-intro {
+  margin: var(--aira-space-2) 0 0;
+  max-width: var(--aira-reading-max);
+  color: var(--aira-text-secondary);
+}
+
+.aira-section-title {
+  margin: 0 0 var(--aira-space-2);
+  font-size: 1.125rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--aira-text);
+}
+
+.aira-subsection-title {
+  margin: 0 0 var(--aira-space-1);
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--aira-text);
+}
+
+.aira-meta {
+  font-size: 0.75rem;
+  color: var(--aira-text-secondary);
+}
+
+.aira-main a {
+  color: var(--aira-link);
+  text-decoration: none;
+}
+
+.aira-main a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.aira-link,
+.aira-inline-link,
+.aira-prose a {
+  color: var(--aira-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.aira-link:hover,
+.aira-inline-link:hover,
+.aira-prose a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.aira-copy-block {
+  display: grid;
+  gap: var(--aira-space-1);
+  line-height: 1.45;
+}
+
+.aira-copy-block > :first-child {
+  margin-top: 0;
+}
+
+.aira-copy-block > :last-child {
+  margin-bottom: 0;
+}
+
+.aira-copy-block p {
+  margin: 0;
+}

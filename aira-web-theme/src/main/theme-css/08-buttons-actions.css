@@ -1,0 +1,150 @@
+/* 8. Buttons and Actions */
+.aira-button,
+.aira-main a.aira-button {
+  min-height: var(--aira-control-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aira-space-2);
+  padding: 0.375rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--aira-radius-control);
+  font: 600 0.875rem/1.2 var(--aira-font-sans);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.aira-button--primary,
+.aira-main a.aira-button--primary {
+  color: var(--aira-white);
+  background: var(--aira-primary-action);
+}
+
+.aira-button--primary:hover,
+.aira-main a.aira-button--primary:hover {
+  background: var(--aira-primary-action-hover);
+}
+
+.aira-button--secondary,
+.aira-main a.aira-button--secondary {
+  color: var(--aira-text);
+  background: var(--aira-surface);
+  border-color: var(--aira-primary-action);
+}
+
+.aira-button--secondary:hover,
+.aira-main a.aira-button--secondary:hover {
+  background: var(--aira-background);
+}
+
+.aira-button--tertiary,
+.aira-main a.aira-button--tertiary {
+  color: var(--aira-text);
+  background: var(--aira-surface-muted);
+  border-color: var(--aira-border-subtle);
+}
+
+.aira-button--tertiary:hover,
+.aira-main a.aira-button--tertiary:hover {
+  background: var(--aira-row-hover);
+  border-color: var(--aira-border-strong);
+}
+
+.aira-button--tertiary:focus-visible,
+.aira-main a.aira-button--tertiary:focus-visible {
+  border-color: var(--aira-focus-ring);
+}
+
+.aira-button--success,
+.aira-main a.aira-button--success {
+  color: var(--aira-white);
+  background: var(--aira-green-accessible);
+}
+
+.aira-button--danger,
+.aira-main a.aira-button--danger {
+  color: var(--aira-white);
+  background: var(--aira-danger);
+}
+
+.aira-button--ghost,
+.aira-main a.aira-button--ghost {
+  color: var(--aira-text);
+  background: transparent;
+  border-color: transparent;
+}
+
+.aira-button--ghost:hover,
+.aira-main a.aira-button--ghost:hover {
+  background: var(--aira-surface-muted);
+}
+
+.aira-button--link,
+.aira-main a.aira-button--link {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--aira-link);
+  text-decoration: underline;
+}
+
+.aira-button--link:hover,
+.aira-main a.aira-button--link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.aira-button--small,
+.aira-main a.aira-button--small {
+  min-height: var(--aira-control-height-small);
+  padding: 0.25rem 0.55rem;
+  font-size: 0.8125rem;
+}
+
+.aira-button--icon {
+  width: var(--aira-touch-target);
+  padding-inline: 0;
+}
+
+.aira-button:disabled,
+.aira-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.64;
+}
+
+.aira-action-group,
+.aira-page-actions,
+.aira-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+  align-items: center;
+}
+
+.aira-action-group--end,
+.aira-form-actions--end {
+  justify-content: flex-end;
+}
+
+.aira-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--aira-space-3);
+  padding: var(--aira-space-3);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-panel);
+  background: var(--aira-surface);
+}
+
+.aira-sticky-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--aira-z-sticky);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--aira-space-2);
+  padding: var(--aira-space-3) 0 max(var(--aira-space-3), env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(242, 242, 242, 0), var(--aira-background) 35%);
+}

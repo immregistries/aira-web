@@ -1,0 +1,13 @@
+/* 16. Management Layouts */
+.aira-management-shell {
+  display: grid;
+  gap: var(--aira-section-gap);
+}
+
+.aira-management-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--aira-space-3);
+}

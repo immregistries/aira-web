@@ -1,0 +1,161 @@
+/* 9. Forms */
+.aira-form {
+  display: grid;
+  gap: var(--aira-section-gap);
+}
+
+.aira-field {
+  display: grid;
+  gap: var(--aira-space-1);
+}
+
+.aira-field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--aira-section-gap);
+}
+
+.aira-field label,
+.aira-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--aira-text);
+}
+
+.aira-required {
+  color: var(--aira-danger);
+  font-weight: 700;
+}
+
+.aira-input,
+.aira-select,
+.aira-textarea {
+  width: 100%;
+  min-height: var(--aira-control-height);
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--aira-blue-gray);
+  border-radius: var(--aira-radius-control);
+  background: var(--aira-surface);
+  color: var(--aira-text);
+  font: 400 0.9375rem/1.4 var(--aira-font-sans);
+}
+
+.aira-textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.aira-input[aria-invalid="true"],
+.aira-select[aria-invalid="true"],
+.aira-textarea[aria-invalid="true"] {
+  border-color: var(--aira-danger);
+}
+
+.aira-input:disabled,
+.aira-select:disabled,
+.aira-textarea:disabled {
+  background: var(--aira-surface-disabled);
+  color: var(--aira-text-disabled);
+  cursor: not-allowed;
+}
+
+.aira-field-help {
+  font-size: 0.8125rem;
+  color: var(--aira-text-secondary);
+}
+
+.aira-field-error {
+  font-size: 0.875rem;
+  color: var(--aira-danger);
+  font-weight: 600;
+}
+
+.aira-error-summary {
+  padding: var(--aira-panel-padding);
+  border: 2px solid var(--aira-danger);
+  border-radius: var(--aira-radius-panel);
+  background: var(--aira-error-surface);
+}
+
+.aira-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: var(--aira-panel-padding);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-panel);
+}
+
+.aira-legend {
+  padding: 0 var(--aira-space-1);
+  font-weight: 600;
+}
+
+.aira-check,
+.aira-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--aira-space-2);
+  min-height: 1.75rem;
+}
+
+.aira-check input,
+.aira-radio input {
+  flex: 0 0 auto;
+  margin-top: 0.25rem;
+}
+
+.aira-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aira-space-2);
+  min-height: var(--aira-touch-target);
+  font-weight: 600;
+}
+
+.aira-switch input {
+  width: 2.75rem;
+  height: 1.5rem;
+  accent-color: var(--aira-green-accessible);
+}
+
+.aira-segmented-control,
+.aira-chip-list,
+.aira-rating-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}
+
+.aira-segment,
+.aira-chip,
+.aira-rating-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--aira-border-strong);
+  border-radius: var(--aira-radius-pill);
+  background: var(--aira-surface);
+  color: var(--aira-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.aira-segment[aria-selected="true"],
+.aira-chip[aria-selected="true"],
+.aira-rating-option[aria-selected="true"],
+.aira-segment.is-selected,
+.aira-chip.is-selected,
+.aira-rating-option.is-selected {
+  border-color: var(--aira-green-accessible);
+  background: var(--aira-surface-selected);
+  color: var(--aira-green-accessible);
+}
+
+.aira-inline-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--aira-space-2);
+}

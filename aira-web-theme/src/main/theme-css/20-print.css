@@ -1,0 +1,51 @@
+/* 20. Print Rules */
+@media print {
+  .aira-no-print,
+  .aira-global-header,
+  .aira-context-header,
+  .aira-sticky-actions,
+  .aira-right-rail {
+    display: none !important;
+  }
+
+  .aira-print-only {
+    display: block !important;
+  }
+
+  .aira-main,
+  .aira-container,
+  .aira-container--narrow,
+  .aira-container--standard,
+  .aira-container--wide,
+  .aira-right-rail-layout {
+    width: auto;
+    padding: 0;
+  }
+
+  .aira-right-rail-layout {
+    display: block;
+  }
+
+  .aira-table-scroll,
+  .aira-table-wrap {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .aira-table--sticky-header thead th {
+    position: static;
+  }
+
+  .aira-table thead {
+    display: table-header-group;
+  }
+
+  .aira-figure__frame {
+    overflow: visible;
+  }
+
+  .aira-figure--scroll .aira-figure__image,
+  .aira-figure--scroll svg {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,141 @@
+/* 19. Responsive Rules */
+@media (max-width: 64rem) {
+  .aira-global-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .aira-global-search {
+    order: 4;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .aira-context-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--aira-space-2);
+  }
+
+  .aira-context-nav {
+    width: 100%;
+  }
+
+  .aira-sidebar-layout,
+  .aira-right-rail-layout,
+  .aira-split,
+  .aira-topic-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .aira-sidebar--sticky,
+  .aira-right-rail {
+    position: static;
+  }
+
+  .aira-sidebar--sticky {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .aira-outcome-row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .aira-outcome-row__type {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .aira-outcome-row__summary {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .aira-outcome-row__source {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .aira-outcome-row__date {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .aira-outcome-row__action {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+    align-self: center;
+  }
+
+  .aira-meeting-row,
+  .aira-relationship-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .aira-meeting-row__meta,
+  .aira-relationship-row__verb {
+    grid-column: 1 / 2;
+  }
+}
+
+@media (max-width: 48rem) {
+  .aira-global-header,
+  .aira-context-inner {
+    padding-inline: var(--aira-space-4);
+  }
+
+  .aira-identity {
+    width: 100%;
+  }
+
+  .aira-app-name {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .aira-global-actions,
+  .aira-account-area {
+    width: 100%;
+  }
+
+  .aira-page-header,
+  .aira-management-header {
+    flex-direction: column;
+  }
+
+  .aira-event-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .aira-topic-header__top,
+  .aira-topic-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 36rem) {
+  .aira-choice-row,
+  .aira-outcome-row,
+  .aira-meeting-row,
+  .aira-relationship-row {
+    grid-template-columns: 1fr;
+  }
+
+  .aira-outcome-row__source,
+  .aira-outcome-row__date,
+  .aira-outcome-row__type,
+  .aira-outcome-row__action,
+  .aira-meeting-row__meta,
+  .aira-relationship-row__verb {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .aira-outcome-row__action,
+  .aira-meeting-row__action,
+  .aira-relationship-row__action {
+    justify-self: start;
+  }
+}

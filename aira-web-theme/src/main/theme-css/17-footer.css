@@ -1,0 +1,24 @@
+/* 17. Footer */
+.aira-footer {
+  flex: 0 0 auto;
+  padding: 0.75rem 1.5rem;
+  border-top: 4px solid var(--aira-green);
+  background: var(--aira-navy);
+  color: var(--aira-white);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.aira-footer p {
+  margin: 0;
+}
+
+.aira-footer p + p {
+  margin-top: 0.25rem;
+}
+
+.aira-footer a {
+  color: var(--aira-white);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
