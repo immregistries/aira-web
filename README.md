@@ -4,6 +4,8 @@ Reusable AIRA web application resources for Java Servlet applications that gener
 
 This repository provides a first usable shared design-system release for AIRA applications: a versioned CSS theme, small Java renderers for the common application shell, and a servlet-only demo application that consumes the same artifacts downstream applications will consume.
 
+The shared stylesheet is for dense AIRA technical applications: collaboration workspaces, operational tools, dashboards, registries, repositories, validation tools, and administrative screens. It is not intended to replace AIRA marketing or public-facing website styles.
+
 ## Modules
 
 - `aira-web-theme` - JAR containing shared static resources under `META-INF/resources/aira/`, including `META-INF/resources/aira/css/aira.css` and the default AIRA logo image.
@@ -32,6 +34,8 @@ Then inspect:
 
 ```text
 http://localhost:8080/aira-web-demo/
+http://localhost:8080/aira-web-demo/topic
+http://localhost:8080/aira-web-demo/tables
 http://localhost:8080/aira-web-demo/management
 http://localhost:8080/aira-web-demo/components
 ```
@@ -59,6 +63,8 @@ Application CSS may be loaded afterward for domain-specific composition:
 ```
 
 Application CSS should not redefine AIRA brand tokens, the base shell, footer, form controls, primary buttons, or shared component classes.
+
+The stylesheet is desktop-first and compact by default. It includes defensive responsiveness for wrapping headers, overflowing tables and technical figures, sidebars, right rails, and browser zoom. Mobile-optimized product flows should be explicit application-specific patterns layered on top of the shared baseline.
 
 ## Public Resource Contract
 
@@ -88,13 +94,14 @@ Use concise alt text that identifies the organization, such as `American Immuniz
 The shared CSS includes:
 
 - Two-level shell: global header, identity, search, actions, account area, environment badge, contextual title/navigation.
-- Layout primitives: standard/narrow/wide containers, stacks, clusters, responsive grids, card grids, sidebar layouts, split layouts, toolbars, reading width.
+- Layout primitives: standard/narrow/wide containers, stacks, clusters, responsive grids, card grids, sidebar layouts, right-rail layouts, split layouts, toolbars, reading width.
 - Buttons and action areas: primary, secondary, tertiary, success, danger, ghost, link, small, icon-compatible, grouped, responsive, and sticky actions.
 - Forms: form containers, field rows, fieldsets, native checkboxes/radios, search fields, switches, segmented/rating/chip controls, inline forms, action areas, help, errors, and error summaries.
 - Badges, tags, status text, and status dots, including subtle, outline, info, success, warning, and danger badge variants.
-- Panels, cards, interactive cards, choice rows, resource-card structure, and empty states.
+- Panels, cards, elevated cards, interactive cards, section cards, choice rows, resource-card structure, and empty states.
 - Event lists for meetings, workshops, webinars, and other dated events.
-- Tables with overflow wrappers and compact density.
+- Topic-page primitives: topic headers, metadata chips, status cards, figures, outcomes, compact meeting rows, relationship rows, resources, recently viewed entries, and topic detail strips.
+- Tables with panels, light default headers, optional branded headers, sortable-heading styles, sticky headers, empty states, overflow wrappers, and compact density.
 - Alerts, management layout helpers, footer, and small utilities.
 
 The Java component layer intentionally remains small. It renders the shared shell and leaves page-specific content to the servlet.

@@ -221,7 +221,7 @@ Use breadcrumbs only when users move through a true hierarchy. Do not add them t
 
 ### 10.4 Tables
 
-- Header background: AIRA navy; header text: white, weight 600.
+- Default header background: light muted surface with navy text. Use the navy branded-header variant sparingly for summary tables that need stronger AIRA emphasis.
 - Body rows: white with optional off-white striping.
 - Selected row: light green with navy text.
 - Hover row: very pale green or off-white, distinct from selected state.
