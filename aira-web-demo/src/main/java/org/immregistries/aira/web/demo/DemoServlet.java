@@ -379,6 +379,7 @@ public class DemoServlet extends HttpServlet {
       out.println("    <div class=\"aira-container--wide aira-stack\">");
       out.println("      <header><h1 class=\"aira-page-title\">Tables</h1><p class=\"aira-page-intro\">Standard table patterns for dense AIRA technical applications. Tables remain semantic, preserve columns, and use horizontal scrolling when content needs more width.</p></header>");
       renderTopicsUnderReviewTable(out);
+      renderTopicMatrixTable(out);
       renderMessageProcessingTable(out);
       renderBrandHeaderTable(out);
       renderSortableTable(out, sort, direction);
@@ -423,6 +424,74 @@ public class DemoServlet extends HttpServlet {
       case "Revision", "Draft" -> "aira-badge--warning";
       default -> "aira-badge--subtle";
     };
+  }
+
+  private static void renderTopicMatrixTable(PrintWriter out) {
+    out.println("      <section class=\"aira-table-panel\" aria-labelledby=\"topic-matrix-title\">");
+    out.println("        <div class=\"aira-table-panel__header\"><div><h2 class=\"aira-table-panel__title\" id=\"topic-matrix-title\">Topic board matrix</h2><p class=\"aira-table-panel__description\">Two-axis board table with sticky stage headers, sticky path headers, stacked entity cards, and disabled intersections.</p></div><div class=\"aira-table-panel__actions\"><button class=\"aira-button aira-button--small aira-button--secondary\" type=\"button\">Add stage</button></div></div>");
+    out.println("        <div class=\"aira-matrix-table-wrap\"><table class=\"aira-matrix-table\"><caption class=\"aira-visually-hidden\">Topic board matrix by advancement path and stage</caption><thead><tr>");
+    out.println("          <th scope=\"col\" class=\"aira-matrix-table__corner\"><div class=\"aira-matrix-table__header-inner\"><span class=\"aira-matrix-table__label\">Path / Stage</span></div></th>");
+    matrixColumnHeader(out, "Growing Idea", true);
+    matrixColumnHeader(out, "Pilot", true);
+    matrixColumnHeader(out, "Monitor", false);
+    out.println("        </tr></thead><tbody>");
+    out.println("          <tr>");
+    matrixRowHeader(out, "Leadership Review");
+    matrixCellStart(out, false);
+    entityCard(out, "PHACT", true, "Open");
+    entityCard(out, "Contextual Conditions", false, "Open");
+    matrixCellEnd(out);
+    matrixCellStart(out, false);
+    entityCard(out, "Certificate Renewal", true, "Open");
+    matrixCellEnd(out);
+    matrixCellStart(out, true);
+    out.println("              <span class=\"aira-muted\">Not used for this path</span>");
+    matrixCellEnd(out);
+    out.println("          </tr>");
+    out.println("          <tr>");
+    matrixRowHeader(out, "Implementation Workgroup");
+    matrixCellStart(out, false);
+    entityCard(out, "FHIR Subscription Events", false, "Open");
+    matrixCellEnd(out);
+    matrixCellStart(out, false);
+    entityCard(out, "Inventory Reconciliation", true, "Open");
+    matrixCellEnd(out);
+    matrixCellStart(out, false);
+    entityCard(out, "Provider Enrollment Integration", false, "Open");
+    matrixCellEnd(out);
+    out.println("          </tr>");
+    out.println("        </tbody></table></div>");
+    out.println("      </section>");
+  }
+
+  private static void matrixColumnHeader(PrintWriter out, String label, boolean includeAction) {
+    out.println("          <th scope=\"col\" class=\"aira-matrix-table__col-header\"><div class=\"aira-matrix-table__header-inner\"><span class=\"aira-matrix-table__label\">"
+        + escapeHtml(label) + "</span>"
+        + (includeAction ? "<button class=\"aira-button aira-button--small aira-button--ghost\" type=\"button\">Add</button>" : "")
+        + "</div></th>");
+  }
+
+  private static void matrixRowHeader(PrintWriter out, String label) {
+    out.println("            <th scope=\"row\" class=\"aira-matrix-table__row-header\"><div class=\"aira-matrix-table__header-inner\"><span class=\"aira-matrix-table__label\">"
+        + escapeHtml(label) + "</span></div></th>");
+  }
+
+  private static void matrixCellStart(PrintWriter out, boolean disabled) {
+    out.println("            <td class=\"aira-matrix-table__cell"
+        + (disabled ? " aira-matrix-table__cell--disabled" : "")
+        + "\"><div class=\"aira-stack aira-stack--compact\">");
+  }
+
+  private static void matrixCellEnd(PrintWriter out) {
+    out.println("            </div></td>");
+  }
+
+  private static void entityCard(PrintWriter out, String title, boolean includeHandle, String action) {
+    out.println("              <article class=\"aira-entity-card\">"
+        + (includeHandle ? "<span class=\"aira-entity-card__handle\" aria-hidden=\"true\">::</span>" : "")
+        + "<a class=\"aira-entity-card__title\" href=\"#topic\">" + escapeHtml(title)
+        + "</a><a class=\"aira-entity-card__action\" href=\"#topic\">" + escapeHtml(action)
+        + "</a></article>");
   }
 
   private static void renderMessageProcessingTable(PrintWriter out) {

@@ -204,6 +204,57 @@ Sortable headings are presentational only; applications own sorting behavior. Pu
 
 Use `aira-table-scroll` with `aira-table--sticky-header` only when a constrained table region is intentional. Empty tables should render one cell with the correct `colspan`.
 
+### Matrix Tables and Entity Cards
+
+Use `aira-matrix-table` for two-axis boards where a row header and column header both define the meaning of each cell. The wrapper supports two-direction scrolling; the corner, column headers, and row headers remain sticky while the matrix scrolls. Header labels stay left-aligned whether or not a trailing control is present.
+
+Use `aira-entity-card` for compact records inside matrix cells or other dense lists. The leading handle and trailing action are optional. Applications own drag-and-drop behavior, dialogs, and data-grid logic.
+
+```html
+<div class="aira-matrix-table-wrap">
+  <table class="aira-matrix-table">
+    <caption class="aira-visually-hidden">Topic board by path and stage</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="aira-matrix-table__corner">
+          <div class="aira-matrix-table__header-inner">
+            <span class="aira-matrix-table__label">Path / Stage</span>
+          </div>
+        </th>
+        <th scope="col" class="aira-matrix-table__col-header">
+          <div class="aira-matrix-table__header-inner">
+            <span class="aira-matrix-table__label">Growing Idea</span>
+            <button class="aira-button aira-button--small aira-button--ghost" type="button">Add</button>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="aira-matrix-table__row-header">
+          <div class="aira-matrix-table__header-inner">
+            <span class="aira-matrix-table__label">Leadership Review</span>
+          </div>
+        </th>
+        <td class="aira-matrix-table__cell">
+          <div class="aira-stack aira-stack--compact">
+            <article class="aira-entity-card">
+              <span class="aira-entity-card__handle" aria-hidden="true">::</span>
+              <a class="aira-entity-card__title" href="/topics/phact">PHACT</a>
+              <a class="aira-entity-card__action" href="/topics/phact">Open</a>
+            </article>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" class="aira-matrix-table__row-header">Inactive path</th>
+        <td class="aira-matrix-table__cell aira-matrix-table__cell--disabled">Not used for this path</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
 ### Buttons and Actions
 
 Use shared button variants before defining application-specific action colors:
