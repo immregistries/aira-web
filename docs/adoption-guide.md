@@ -198,7 +198,7 @@ Tables use light headers by default and should remain semantic HTML tables. Wrap
 
 ## Application-Specific Behavior
 
-AIRA Web does not implement JavaScript interactions, authentication, routing, form processing, menu behavior, dialogs, bottom sheets, drag-and-drop, or domain rules. Use native HTML controls where possible and layer application behavior separately.
+AIRA Web does not implement JavaScript interactions, authentication, routing, form processing, menu behavior, dialog behavior, bottom sheets, drag-and-drop, or domain rules. Use native HTML controls where possible and layer application behavior separately.
 
 ## Upgrades
 

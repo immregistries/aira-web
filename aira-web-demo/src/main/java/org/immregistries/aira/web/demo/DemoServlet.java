@@ -665,6 +665,7 @@ public class DemoServlet extends HttpServlet {
       out.println("      <header><h1 class=\"aira-page-title\">Component reference</h1><p class=\"aira-page-intro\">First-release AIRA Web component variants for servlet-generated pages.</p></header>");
       out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Buttons</h2><div class=\"aira-action-group\"><button class=\"aira-button aira-button--primary\">Primary</button><button class=\"aira-button aira-button--secondary\">Secondary</button><button class=\"aira-button aira-button--tertiary\">Tertiary</button><button class=\"aira-button aira-button--success\">Success</button><button class=\"aira-button aira-button--danger\">Danger</button><button class=\"aira-button aira-button--ghost\">Ghost</button><a class=\"aira-button aira-button--tertiary\" href=\"#topics\">Tertiary link</a><button class=\"aira-button aira-button--small\">Small</button><button class=\"aira-button aira-button--icon\" aria-label=\"Add\">+</button></div></section>");
       out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Badges and tags</h2><div class=\"aira-tag-list\"><span class=\"aira-badge\">Neutral</span><span class=\"aira-badge aira-badge--subtle\">Subtle</span><span class=\"aira-badge aira-badge--info\">Info</span><span class=\"aira-badge aira-badge--success\">Success</span><span class=\"aira-badge aira-badge--warning\">Warning</span><span class=\"aira-badge aira-badge--danger\">Danger</span><span class=\"aira-tag aira-tag--outline\">Outline tag</span></div></section>");
+      renderDialogExample(out);
       renderManagementForm(out, request.getContextPath());
       out.println("      <section class=\"aira-alert aira-alert--info\"><p class=\"aira-alert__title\">Information alert</p><p>Alerts use pale semantic surfaces and a strong left border.</p></section>");
       renderFeaturedCards(out);
@@ -673,6 +674,33 @@ public class DemoServlet extends HttpServlet {
       out.println("    </div>");
       page.writeEnd(out);
     }
+  }
+
+  private static void renderDialogExample(PrintWriter out) {
+    out.println("      <section class=\"aira-panel\" aria-labelledby=\"dialog-title\">");
+    out.println("        <h2 class=\"aira-section-title\" id=\"dialog-title\">Dialog</h2>");
+    out.println("        <p class=\"aira-muted\">Native dialog surface using shared AIRA tokens.</p>");
+    out.println("        <button class=\"aira-button aira-button--secondary\" type=\"button\" data-dialog-open=\"component-dialog\">Open dialog</button>");
+    out.println("        <dialog class=\"aira-dialog\" id=\"component-dialog\" aria-labelledby=\"component-dialog-title\">");
+    out.println("          <h3 class=\"aira-dialog__title\" id=\"component-dialog-title\">Legal term details</h3>");
+    out.println("          <div class=\"aira-dialog__body\"><p>Use native showModal() and close() behavior for focus handling, Escape-to-close, and top-layer stacking. Applications own the JavaScript that opens the dialog.</p></div>");
+    out.println("          <div class=\"aira-dialog__actions aira-form-actions aira-form-actions--end\"><button type=\"button\" class=\"aira-button aira-button--secondary\" data-dialog-close=\"component-dialog\">Close</button></div>");
+    out.println("        </dialog>");
+    out.println("        <script>");
+    out.println("          document.querySelectorAll('[data-dialog-open]').forEach(function (button) {");
+    out.println("            button.addEventListener('click', function () {");
+    out.println("              var dialog = document.getElementById(button.getAttribute('data-dialog-open'));");
+    out.println("              if (dialog && typeof dialog.showModal === 'function') { dialog.showModal(); }");
+    out.println("            });");
+    out.println("          });");
+    out.println("          document.querySelectorAll('[data-dialog-close]').forEach(function (button) {");
+    out.println("            button.addEventListener('click', function () {");
+    out.println("              var dialog = document.getElementById(button.getAttribute('data-dialog-close'));");
+    out.println("              if (dialog) { dialog.close(); }");
+    out.println("            });");
+    out.println("          });");
+    out.println("        </script>");
+    out.println("      </section>");
   }
 
   private static String loadApplicationVersion() {

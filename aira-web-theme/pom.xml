@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.immregistries</groupId>
     <artifactId>aira-web</artifactId>
-    <version>0.1.6</version>
+    <version>0.1.7</version>
   </parent>
 
   <artifactId>aira-web-theme</artifactId>
@@ -41,7 +41,7 @@
                 <concat destfile="${project.build.directory}/generated-resources/aira-theme/META-INF/resources/aira/css/aira.css"
                         fixlastline="yes">
                   <filelist dir="${project.basedir}/src/main/theme-css"
-                            files="00-banner.css,01-tokens.css,02-reset-base.css,03-accessibility.css,04-global-shell.css,05-context-nav.css,06-layout.css,07-typography.css,08-buttons-actions.css,09-forms.css,10-badges-tags.css,11-cards-panels-choice-rows.css,12-event-lists.css,13-topic-dashboard.css,14-tables.css,15-alerts.css,16-management.css,17-footer.css,18-utilities.css,19-responsive.css,20-print.css,21-reduced-motion.css"/>
+                            files="00-banner.css,01-tokens.css,02-reset-base.css,03-accessibility.css,04-global-shell.css,05-context-nav.css,06-layout.css,07-typography.css,08-buttons-actions.css,09-forms.css,10-badges-tags.css,11-cards-panels-choice-rows.css,12-event-lists.css,13-topic-dashboard.css,14-tables.css,15-dialog.css,15-alerts.css,16-management.css,17-footer.css,18-utilities.css,19-responsive.css,20-print.css,21-reduced-motion.css"/>
                 </concat>
               </target>
             </configuration>

@@ -110,6 +110,7 @@ The renderer only emits the shell. Page content should use the shared `aira-` CS
 - Event lists.
 - Right-rail layouts and compact topic-page patterns.
 - Tables.
+- Native dialog surfaces.
 - Alerts.
 - Management sidebars/layouts.
 - Utilities.
@@ -208,7 +209,7 @@ Use `aira-table-scroll` with `aira-table--sticky-header` only when a constrained
 
 Use `aira-matrix-table` for two-axis boards where a row header and column header both define the meaning of each cell. The wrapper supports two-direction scrolling; the corner, column headers, and row headers remain sticky while the matrix scrolls. Header labels stay left-aligned whether or not a trailing control is present.
 
-Use `aira-entity-card` for compact records inside matrix cells or other dense lists. The leading handle and trailing action are optional. Applications own drag-and-drop behavior, dialogs, and data-grid logic.
+Use `aira-entity-card` for compact records inside matrix cells or other dense lists. The leading handle and trailing action are optional. Applications own drag-and-drop behavior and data-grid logic.
 
 ```html
 <div class="aira-matrix-table-wrap">
@@ -274,6 +275,50 @@ Button variants work on both native buttons and links:
 ```html
 <button class="aira-button aira-button--tertiary" type="button">Preview</button>
 <a class="aira-button aira-button--tertiary" href="/reports">Open report</a>
+```
+
+### Dialogs
+
+Use `aira-dialog` on a native HTML `<dialog>` element for small blocking prompts, confirmation details, and bounded modal content. AIRA Web provides only the styling contract. Applications own the JavaScript that calls `showModal()` and `close()`.
+
+```html
+<button class="aira-button aira-button--secondary" type="button" data-dialog-open="term-details">
+  More details
+</button>
+
+<dialog class="aira-dialog" id="term-details" aria-labelledby="term-details-title">
+  <h3 class="aira-dialog__title" id="term-details-title">Term title</h3>
+  <div class="aira-dialog__body">
+    Legal term details or confirmation text.
+  </div>
+  <div class="aira-dialog__actions aira-form-actions aira-form-actions--end">
+    <button type="button" class="aira-button aira-button--secondary" data-dialog-close="term-details">
+      Close
+    </button>
+  </div>
+</dialog>
+```
+
+```html
+<script>
+  document.querySelectorAll("[data-dialog-open]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var dialog = document.getElementById(button.getAttribute("data-dialog-open"));
+      if (dialog && typeof dialog.showModal === "function") {
+        dialog.showModal();
+      }
+    });
+  });
+
+  document.querySelectorAll("[data-dialog-close]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var dialog = document.getElementById(button.getAttribute("data-dialog-close"));
+      if (dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>
 ```
 
 ### Badges and Status Guidance
@@ -342,4 +387,4 @@ Default table padding is already compact for technical applications.
 
 ## Deliberately Not Included
 
-This release does not include shared JavaScript, menus, dialogs, bottom sheets, drag-and-drop, authentication hooks, session handling, data-grid renderers, or domain-specific component renderers.
+This release does not include shared JavaScript, menus, bottom sheets, drag-and-drop, authentication hooks, session handling, data-grid renderers, or domain-specific component renderers.

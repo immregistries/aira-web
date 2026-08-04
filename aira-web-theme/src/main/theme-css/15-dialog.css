@@ -1,0 +1,38 @@
+/* 15. Dialogs */
+.aira-dialog {
+  width: min(90vw, 40rem);
+  max-width: 40rem;
+  padding: var(--aira-panel-padding);
+  border: 1px solid var(--aira-border);
+  border-radius: var(--aira-radius-panel);
+  background: var(--aira-surface);
+  color: var(--aira-text);
+  box-shadow: var(--aira-shadow-dialog);
+}
+
+.aira-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.aira-dialog__title {
+  margin: 0 0 var(--aira-space-2);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.aira-dialog__body {
+  white-space: pre-wrap;
+}
+
+.aira-dialog__body > :first-child {
+  margin-top: 0;
+}
+
+.aira-dialog__body > :last-child {
+  margin-bottom: 0;
+}
+
+.aira-dialog__actions {
+  margin-top: var(--aira-space-4);
+}

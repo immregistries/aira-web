@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.immregistries</groupId>
     <artifactId>aira-web</artifactId>
-    <version>0.1.6</version>
+    <version>0.1.7</version>
   </parent>
 
   <artifactId>aira-web-components</artifactId>
