@@ -18,6 +18,29 @@
   background: var(--aira-surface);
 }
 
+.aira-table-panel--info,
+.aira-table-panel--success,
+.aira-table-panel--warning,
+.aira-table-panel--danger {
+  border-left-width: 4px;
+}
+
+.aira-table-panel--info {
+  border-left-color: var(--aira-focus);
+}
+
+.aira-table-panel--success {
+  border-left-color: var(--aira-success);
+}
+
+.aira-table-panel--warning {
+  border-left-color: var(--aira-yellow);
+}
+
+.aira-table-panel--danger {
+  border-left-color: var(--aira-danger);
+}
+
 .aira-table-panel__header {
   display: flex;
   align-items: flex-start;

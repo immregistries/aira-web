@@ -381,6 +381,7 @@ public class DemoServlet extends HttpServlet {
       renderTopicsUnderReviewTable(out);
       renderTopicMatrixTable(out);
       renderMessageProcessingTable(out);
+      renderSemanticTablePanels(out);
       renderBrandHeaderTable(out);
       renderSortableTable(out, sort, direction);
       renderStickyHeaderTable(out);
@@ -421,7 +422,8 @@ public class DemoServlet extends HttpServlet {
     return switch (stage) {
       case "Growing Idea", "Proposed" -> "aira-badge--info";
       case "Monitor" -> "aira-badge--success";
-      case "Revision", "Draft" -> "aira-badge--warning";
+      case "Revision", "Draft", "Needs revision", "Postponed", "Due soon" -> "aira-badge--warning";
+      case "Overdue" -> "aira-badge--danger";
       default -> "aira-badge--subtle";
     };
   }
@@ -515,6 +517,45 @@ public class DemoServlet extends HttpServlet {
         + "</td><td class=\"aira-table__cell--numeric\">" + escapeHtml(rate)
         + "</td><td class=\"aira-table__cell--date\">" + escapeHtml(lastSubmission)
         + "</td><td class=\"aira-table__cell--wrap\">" + escapeHtml(notes) + "</td></tr>");
+  }
+
+  private static void renderSemanticTablePanels(PrintWriter out) {
+    out.println("      <div class=\"aira-grid\">");
+    renderFlaggedAgendaTable(out, "warning", "Open items", "Carried forward from previous meetings.",
+        "Prior Item", "Reason", "Re-add");
+    renderFlaggedAgendaTable(out, "danger", "Curated topic cadence", "Topics due soon or overdue for discussion.",
+        "Topic", "Cadence", "Quick add");
+    out.println("      </div>");
+  }
+
+  private static void renderFlaggedAgendaTable(PrintWriter out, String variant, String title, String description,
+      String firstColumn, String secondColumn, String action) {
+    String id = "flagged-table-" + variant;
+    out.println("        <section class=\"aira-table-panel aira-table-panel--" + escapeHtml(variant)
+        + "\" aria-labelledby=\"" + id + "-title\">");
+    out.println("          <div class=\"aira-table-panel__header\"><div><h2 class=\"aira-table-panel__title\" id=\""
+        + id + "-title\">" + escapeHtml(title) + "</h2><p class=\"aira-table-panel__description\">"
+        + escapeHtml(description) + "</p></div></div>");
+    out.println("          <div class=\"aira-table-wrap\"><table class=\"aira-table\"><caption class=\"aira-visually-hidden\">"
+        + escapeHtml(title) + "</caption><thead><tr><th scope=\"col\">" + escapeHtml(firstColumn)
+        + "</th><th scope=\"col\">" + escapeHtml(secondColumn)
+        + "</th><th scope=\"col\" class=\"aira-table__cell--actions\"><span class=\"aira-visually-hidden\">Actions</span></th></tr></thead><tbody>");
+    if ("warning".equals(variant)) {
+      flaggedAgendaRow(out, "Transport retry policy", "Needs revision", action);
+      flaggedAgendaRow(out, "Query response examples", "Postponed", action);
+    } else {
+      flaggedAgendaRow(out, "Patient matching signals", "Overdue", action);
+      flaggedAgendaRow(out, "Inventory reconciliation", "Due soon", action);
+    }
+    out.println("          </tbody></table></div>");
+    out.println("        </section>");
+  }
+
+  private static void flaggedAgendaRow(PrintWriter out, String item, String state, String action) {
+    out.println("            <tr><th scope=\"row\" class=\"aira-table__cell--primary\">" + escapeHtml(item)
+        + "</th><td><span class=\"aira-badge " + badgeClassForStage(state) + "\">" + escapeHtml(state)
+        + "</span></td><td class=\"aira-table__cell--actions\"><button class=\"aira-button aira-button--small aira-button--secondary\" type=\"button\">"
+        + escapeHtml(action) + "</button></td></tr>");
   }
 
   private static void renderBrandHeaderTable(PrintWriter out) {

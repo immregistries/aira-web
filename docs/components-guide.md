@@ -193,6 +193,40 @@ Use semantic tables for technical data. The standard header is light and restrai
 </section>
 ```
 
+Use semantic `aira-table-panel` accent modifiers when the table as a whole needs to read as a flagged callout. Available variants are `aira-table-panel--info`, `aira-table-panel--success`, `aira-table-panel--warning`, and `aira-table-panel--danger`.
+
+```html
+<section class="aira-table-panel aira-table-panel--warning">
+  <div class="aira-table-panel__header">
+    <div>
+      <h2 class="aira-table-panel__title">Open Items</h2>
+      <p class="aira-table-panel__description">Carried forward from previous meetings.</p>
+    </div>
+  </div>
+  <div class="aira-table-wrap">
+    <table class="aira-table">
+      <caption class="aira-visually-hidden">Open items</caption>
+      <thead>
+        <tr>
+          <th scope="col">Prior Item</th>
+          <th scope="col">Reason</th>
+          <th scope="col" class="aira-table__cell--actions"><span class="aira-visually-hidden">Actions</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="aira-table__cell--primary">Transport retry policy</th>
+          <td><span class="aira-badge aira-badge--warning">Needs revision</span></td>
+          <td class="aira-table__cell--actions">
+            <button class="aira-button aira-button--small aira-button--secondary" type="button">Re-add</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+```
+
 Standard cell classes include `aira-table__cell--primary`, `aira-table__cell--secondary`, `aira-table__cell--numeric`, `aira-table__cell--date`, `aira-table__cell--nowrap`, `aira-table__cell--actions`, `aira-table__cell--code`, and `aira-table__cell--wrap`.
 
 Sortable headings are presentational only; applications own sorting behavior. Put `aria-sort` on the sorted `th` and include a visible non-color indicator.

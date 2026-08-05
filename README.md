@@ -103,7 +103,7 @@ The shared CSS includes:
 - Panels, cards, elevated cards, interactive cards, section cards, choice rows, resource-card structure, and empty states.
 - Event lists for meetings, workshops, webinars, and other dated events.
 - Topic-page primitives: topic headers, metadata chips, status cards, figures, outcomes, compact meeting rows, relationship rows, resources, recently viewed entries, and topic detail strips.
-- Tables with panels, light default headers, optional branded headers, sortable-heading styles, sticky headers, empty states, overflow wrappers, and compact density.
+- Tables with panels, semantic accent-panel variants, light default headers, optional branded headers, sortable-heading styles, sticky headers, empty states, overflow wrappers, and compact density.
 - Native dialog surface styling for bounded modal prompts using the HTML `<dialog>` element.
 - Alerts, management layout helpers, footer, and small utilities.
 
