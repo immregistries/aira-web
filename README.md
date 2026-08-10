@@ -96,6 +96,7 @@ Use concise alt text that identifies the organization, such as `American Immuniz
 The shared CSS includes:
 
 - Two-level shell: global header, identity, search, actions, account area, environment badge, contextual title/navigation.
+- Header search suggestion popovers with grouped option rows, action rows, status rows, and matched-term highlighting.
 - Layout primitives: standard/narrow/wide containers, stacks, clusters, responsive grids, card grids, sidebar layouts, right-rail layouts, split layouts, toolbars, reading width.
 - Buttons and action areas: primary, secondary, tertiary, success, danger, ghost, link, small, icon-compatible, grouped, responsive, and sticky actions.
 - Forms: form containers, field rows, fieldsets, native checkboxes/radios, search fields, switches, segmented/rating/chip controls, inline forms, action areas, help, errors, and error summaries.

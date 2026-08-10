@@ -706,6 +706,7 @@ public class DemoServlet extends HttpServlet {
       out.println("      <header><h1 class=\"aira-page-title\">Component reference</h1><p class=\"aira-page-intro\">First-release AIRA Web component variants for servlet-generated pages.</p></header>");
       out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Buttons</h2><div class=\"aira-action-group\"><button class=\"aira-button aira-button--primary\">Primary</button><button class=\"aira-button aira-button--secondary\">Secondary</button><button class=\"aira-button aira-button--tertiary\">Tertiary</button><button class=\"aira-button aira-button--success\">Success</button><button class=\"aira-button aira-button--danger\">Danger</button><button class=\"aira-button aira-button--ghost\">Ghost</button><a class=\"aira-button aira-button--tertiary\" href=\"#topics\">Tertiary link</a><button class=\"aira-button aira-button--small\">Small</button><button class=\"aira-button aira-button--icon\" aria-label=\"Add\">+</button></div></section>");
       out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Badges and tags</h2><div class=\"aira-tag-list\"><span class=\"aira-badge\">Neutral</span><span class=\"aira-badge aira-badge--subtle\">Subtle</span><span class=\"aira-badge aira-badge--info\">Info</span><span class=\"aira-badge aira-badge--success\">Success</span><span class=\"aira-badge aira-badge--warning\">Warning</span><span class=\"aira-badge aira-badge--danger\">Danger</span><span class=\"aira-tag aira-tag--outline\">Outline tag</span></div></section>");
+      renderSearchSuggestionsExample(out);
       renderDialogExample(out);
       renderManagementForm(out, request.getContextPath());
       out.println("      <section class=\"aira-alert aira-alert--info\"><p class=\"aira-alert__title\">Information alert</p><p>Alerts use pale semantic surfaces and a strong left border.</p></section>");
@@ -715,6 +716,30 @@ public class DemoServlet extends HttpServlet {
       out.println("    </div>");
       page.writeEnd(out);
     }
+  }
+
+  private static void renderSearchSuggestionsExample(PrintWriter out) {
+    out.println("      <section class=\"aira-panel demo-search-suggestions-example\" aria-labelledby=\"search-suggestions-title\">");
+    out.println("        <h2 class=\"aira-section-title\" id=\"search-suggestions-title\">Search suggestions</h2>");
+    out.println("        <p class=\"aira-muted\">Anchored grouped suggestion popover for combobox/listbox search behavior.</p>");
+    out.println("        <div class=\"aira-global-search aira-search--has-suggestions\">");
+    out.println("          <form class=\"aira-search-form\" role=\"search\" action=\"#search-results\">");
+    out.println("            <input class=\"aira-search-input\" type=\"text\" name=\"q\" value=\"certificate\" role=\"combobox\" aria-expanded=\"true\" aria-controls=\"component-search-listbox\" aria-activedescendant=\"component-search-option-2\" autocomplete=\"off\" aria-label=\"Search topics or meetings\">");
+    out.println("          </form>");
+    out.println("          <div class=\"aira-search-popover\" id=\"component-search-popover\">");
+    out.println("            <div class=\"aira-search-listbox\" id=\"component-search-listbox\" role=\"listbox\">");
+    out.println("              <div class=\"aira-search-group\" role=\"group\" aria-label=\"Topics\"><p class=\"aira-search-group__label\">Topics</p>");
+    out.println("                <a class=\"aira-search-option\" id=\"component-search-option-1\" role=\"option\" href=\"#topic\"><span class=\"aira-search-option__title\"><mark>Certificate</mark> Management</span><span class=\"aira-search-option__meta\">Emerging Standards &middot; Gathering Information</span></a>");
+    out.println("              </div>");
+    out.println("              <div class=\"aira-search-group\" role=\"group\" aria-label=\"Upcoming meetings\"><p class=\"aira-search-group__label\">Upcoming meetings</p>");
+    out.println("                <a class=\"aira-search-option\" id=\"component-search-option-2\" role=\"option\" aria-selected=\"true\" href=\"#meeting\"><span class=\"aira-search-option__title\">Immunization Focus Group</span><span class=\"aira-search-option__meta\">Aug 14, 2026 &middot; 9:25 AM MDT &middot; Emerging Standards</span><span class=\"aira-search-option__match\">Agenda match: <span class=\"aira-text-highlight\">Certificate</span> Management</span></a>");
+    out.println("              </div>");
+    out.println("            </div>");
+    out.println("            <a class=\"aira-search-option aira-search-option--action\" role=\"option\" href=\"#search-results\">View all results for &quot;certificate&quot;</a>");
+    out.println("            <p class=\"aira-search-status\" hidden>No matching topics or meetings</p>");
+    out.println("          </div>");
+    out.println("        </div>");
+    out.println("      </section>");
   }
 
   private static void renderDialogExample(PrintWriter out) {

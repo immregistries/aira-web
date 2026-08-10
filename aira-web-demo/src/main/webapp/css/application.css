@@ -11,3 +11,7 @@
   border-radius: var(--aira-radius-control);
   vertical-align: text-bottom;
 }
+
+.demo-search-suggestions-example {
+  min-height: 17rem;
+}

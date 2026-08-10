@@ -92,3 +92,11 @@
 .aira-copy-block p {
   margin: 0;
 }
+
+mark,
+.aira-text-highlight {
+  padding: 0 0.125em;
+  border-radius: 2px;
+  background: var(--aira-warning-surface);
+  color: inherit;
+}
