@@ -201,6 +201,7 @@
 .aira-matrix-table-wrap {
   width: 100%;
   max-width: 100%;
+  max-height: var(--aira-matrix-table-max-height, 70vh);
   overflow: auto;
   border: 1px solid var(--aira-border);
   border-radius: var(--aira-radius-panel);
@@ -286,9 +287,8 @@
 
 .aira-matrix-table__label {
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .aira-matrix-table__cell {
