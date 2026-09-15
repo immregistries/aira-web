@@ -101,6 +101,28 @@ class AiraPageTest {
   }
 
   @Test
+  void globalActionWithBadgeCountRendersBadgeMarkup() {
+    String html = render(pageBuilder()
+        .addGlobalAction("Action needed", "/welcome", "primary", 3)
+        .build());
+
+    assertTrue(html.contains(
+        "class=\"aira-button aira-button--primary aira-button--has-badge\" href=\"/welcome\""));
+    assertTrue(html.contains("aria-label=\"Action needed, 3 pending\""));
+    assertTrue(html.contains("<span class=\"aira-badge-count\" aria-hidden=\"true\">3</span>"));
+  }
+
+  @Test
+  void globalActionWithZeroOrNegativeBadgeCountOmitsBadge() {
+    String html = render(pageBuilder()
+        .addGlobalAction("No badge", "/none", "secondary", 0)
+        .build());
+
+    assertFalse(html.contains("aira-button--has-badge"));
+    assertFalse(html.contains("aira-badge-count"));
+  }
+
+  @Test
   void optionalHeaderControlsAreOmittedByDefault() {
     String html = render(pageBuilder().build());
 

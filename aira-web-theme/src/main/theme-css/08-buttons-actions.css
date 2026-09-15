@@ -106,6 +106,12 @@
   padding-inline: 0;
 }
 
+.aira-button--has-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aira-space-2);
+}
+
 .aira-button:disabled,
 .aira-button[aria-disabled="true"] {
   cursor: not-allowed;

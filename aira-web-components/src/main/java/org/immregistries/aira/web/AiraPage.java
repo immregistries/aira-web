@@ -118,9 +118,18 @@ public final class AiraPage {
     if (!globalActions.isEmpty()) {
       writer.println("    <nav class=\"aira-global-actions\" aria-label=\"Global actions\">");
       for (AiraActionItem action : globalActions) {
+        Integer badgeCount = action.badgeCount();
+        String badgeClass = badgeCount != null ? " aira-button--has-badge" : "";
+        String ariaLabel = badgeCount != null
+            ? " aria-label=\"" + HtmlEscaper.escapeAttribute(action.label() + ", " + badgeCount + " pending") + "\""
+            : "";
+        String badgeMarkup = badgeCount != null
+            ? "<span class=\"aira-badge-count\" aria-hidden=\"true\">" + badgeCount + "</span>"
+            : "";
         writer.println("      <a class=\"aira-button aira-button--" + HtmlEscaper.escapeAttribute(action.variant())
-            + "\" href=\"" + HtmlEscaper.escapeAttribute(resolvePath(action.href())) + "\">"
-            + HtmlEscaper.escapeText(action.label()) + "</a>");
+            + badgeClass + "\" href=\"" + HtmlEscaper.escapeAttribute(resolvePath(action.href())) + "\""
+            + ariaLabel + ">"
+            + HtmlEscaper.escapeText(action.label()) + badgeMarkup + "</a>");
       }
       writer.println("    </nav>");
     }
@@ -340,6 +349,12 @@ public final class AiraPage {
     /** Adds a global shell action link. */
     public Builder addGlobalAction(String label, String href, String variant) {
       this.globalActions.add(new AiraActionItem(label, href, variant));
+      return this;
+    }
+
+    /** Adds a global shell action link with a badge count. */
+    public Builder addGlobalAction(String label, String href, String variant, int badgeCount) {
+      this.globalActions.add(new AiraActionItem(label, href, variant, badgeCount));
       return this;
     }
 
