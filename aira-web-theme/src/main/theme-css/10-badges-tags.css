@@ -83,7 +83,7 @@
   padding: 0 0.25rem;
   border-radius: var(--aira-radius-pill);
   background: var(--aira-surface);
-  color: inherit;
+  color: var(--aira-text);
   font-size: 0.6875rem;
   font-weight: 700;
   line-height: 1;

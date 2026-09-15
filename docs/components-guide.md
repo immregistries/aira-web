@@ -438,7 +438,7 @@ This mapping is guidance for consistent presentation. Applications remain respon
 
 A `badgeCount` of `0` or less renders no badge, identically to the existing 3-arg `addGlobalAction(label, href, variant)` overload. When a positive count is supplied, the rendered `<a class="aira-button">` gains an `aira-button--has-badge` class, a nested `<span class="aira-badge-count" aria-hidden="true">` showing the count, and an `aria-label` that includes the count in text (e.g. `"Action needed, 3 pending"`) so assistive tech announces it once rather than twice.
 
-`.aira-badge-count` uses `background: var(--aira-surface)` and `color: inherit` so it reads as a light count chip against whatever button variant it sits on (`primary`, `danger`, etc.) instead of introducing a competing accent color.
+`.aira-badge-count` uses a fixed `background: var(--aira-surface)` / `color: var(--aira-text)` pairing so it reads as a light count chip with its own self-contained contrast, legible against any button variant it sits on (`primary`, `danger`, etc.) regardless of that variant's own text color, instead of introducing a competing accent color.
 
 ### Topic and Meeting Components
 

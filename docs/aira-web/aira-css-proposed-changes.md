@@ -15,6 +15,7 @@ Entries below the revision history are the **active queue** — proposals not ye
 | 0.1.9 | 2026-08-06 | [`aira-css-changes-revision-9.md`](aira-css-changes-revision-9.md) | Search suggestion / combobox popover component — requested in [`aira-css-request-9.md`](aira-css-request-9.md) |
 | 0.1.10 | 2026-08-11 | [`aira-css-changes-revision-10.md`](aira-css-changes-revision-10.md) | Bounded/scrollable `aira-matrix-table-wrap` so sticky headers actually stick; `aira-matrix-table__label` wraps instead of truncating |
 | 0.1.11 | 2026-09-15 | [`aira-css-changes-revision-11.md`](aira-css-changes-revision-11.md) | Optional badge count on a global header action item — requested in [`aira-css-request-11.md`](aira-css-request-11.md) |
+| 0.1.12 | 2026-09-15 | [`aira-css-changes-revision-12.md`](aira-css-changes-revision-12.md) | Bug fix: `.aira-badge-count` was white-on-white (invisible) on `aira-button--primary`/`aira-button--danger` — see addendum below |
 
 ---
 
@@ -48,6 +49,17 @@ A numeric badge on a header action is a general affordance — any AIRA applicat
 ### Resolution
 
 Implemented upstream in `aira-web-components`/`aira-web-theme` `0.1.11` (see [`aira-css-changes-revision-11.md`](aira-css-changes-revision-11.md)). InteropHub can consume `0.1.11` once its `pom.xml` is bumped.
+
+### Addendum: badge invisible on `primary`/`danger` (found in production, fixed in 0.1.12)
+
+**Found during:** Production use of the `0.1.11` badge in InteropHub's header action-needed indicator.
+**Date:** 2026-09-15
+
+`.aira-badge-count` used `color: inherit`, so its text color came from whichever button variant it was placed inside. `aira-button--primary` and `aira-button--danger` both set `color: var(--aira-white)`, and the badge's own background is the fixed light `var(--aira-surface)` — so the count rendered white-on-white on those two variants and was completely invisible. It was only ever legible on variants with dark label text (`secondary`, `tertiary`), which is why it shipped unnoticed: the request's own markup sample used a generic `aira-button--primary` without anyone rendering it.
+
+InteropHub's interim workaround was to use the `secondary` variant instead of the semantically-correct `danger` for its header action-needed badge, to avoid the invisible-text bug.
+
+Fixed upstream in `aira-web-components`/`aira-web-theme` `0.1.12` (see [`aira-css-changes-revision-12.md`](aira-css-changes-revision-12.md)) by changing `.aira-badge-count` to `color: var(--aira-text)` — a fixed dark-text-on-light-chip pairing that no longer depends on the surrounding button's text color. InteropHub can consume `0.1.12` and revert to the `danger` variant.
 
 ---
 
