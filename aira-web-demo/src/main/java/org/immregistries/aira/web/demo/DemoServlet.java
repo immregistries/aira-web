@@ -673,7 +673,7 @@ public class DemoServlet extends HttpServlet {
 
   private static void renderManagementForm(PrintWriter out, String contextPath) {
     out.println("        <section class=\"aira-panel\" aria-labelledby=\"edit-title\"><div class=\"aira-panel__header\"><h2 class=\"aira-panel__title\" id=\"edit-title\">Edit display settings</h2></div><div class=\"aira-panel__body\">");
-    out.println("          <form class=\"aira-form\" method=\"get\" action=\"" + escapeHtml(contextPath) + "/management\">");
+    out.println("          <form class=\"aira-form aira-form--narrow\" method=\"get\" action=\"" + escapeHtml(contextPath) + "/management\">");
     out.println("            <div class=\"aira-field-row\"><div class=\"aira-field\"><label for=\"topic-name\">Topic name <span class=\"aira-required\">required</span></label><input class=\"aira-input\" id=\"topic-name\" name=\"topicName\" value=\"FHIR subscription events\" required><span class=\"aira-field-help\">Use the public display name.</span></div><div class=\"aira-field\"><label for=\"stage\">Stage</label><select class=\"aira-select\" id=\"stage\" name=\"stage\"><option>Pilot</option><option>Gather</option><option>Monitor</option></select></div></div>");
     out.println("            <fieldset class=\"aira-fieldset\"><legend class=\"aira-legend\">Visibility</legend><label class=\"aira-radio\"><input type=\"radio\" name=\"visibility\" checked> Public</label><label class=\"aira-radio\"><input type=\"radio\" name=\"visibility\"> Draft</label><label class=\"aira-check\"><input type=\"checkbox\" checked> Allow participants to follow this topic</label></fieldset>");
     out.println("            <label class=\"aira-switch\"><input type=\"checkbox\" checked> Include in meeting recommendations</label>");
@@ -707,6 +707,7 @@ public class DemoServlet extends HttpServlet {
       out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Buttons</h2><div class=\"aira-action-group\"><button class=\"aira-button aira-button--primary\">Primary</button><button class=\"aira-button aira-button--secondary\">Secondary</button><button class=\"aira-button aira-button--tertiary\">Tertiary</button><button class=\"aira-button aira-button--success\">Success</button><button class=\"aira-button aira-button--danger\">Danger</button><button class=\"aira-button aira-button--ghost\">Ghost</button><a class=\"aira-button aira-button--tertiary\" href=\"#topics\">Tertiary link</a><button class=\"aira-button aira-button--small\">Small</button><button class=\"aira-button aira-button--icon\" aria-label=\"Add\">+</button></div></section>");
       out.println("      <section class=\"aira-panel\"><h2 class=\"aira-section-title\">Badges and tags</h2><div class=\"aira-tag-list\"><span class=\"aira-badge\">Neutral</span><span class=\"aira-badge aira-badge--subtle\">Subtle</span><span class=\"aira-badge aira-badge--info\">Info</span><span class=\"aira-badge aira-badge--success\">Success</span><span class=\"aira-badge aira-badge--warning\">Warning</span><span class=\"aira-badge aira-badge--danger\">Danger</span><span class=\"aira-tag aira-tag--outline\">Outline tag</span></div></section>");
       renderSearchSuggestionsExample(out);
+      renderInlineFormExample(out);
       renderDialogExample(out);
       renderManagementForm(out, request.getContextPath());
       out.println("      <section class=\"aira-alert aira-alert--info\"><p class=\"aira-alert__title\">Information alert</p><p>Alerts use pale semantic surfaces and a strong left border.</p></section>");
@@ -716,6 +717,18 @@ public class DemoServlet extends HttpServlet {
       out.println("    </div>");
       page.writeEnd(out);
     }
+  }
+
+  private static void renderInlineFormExample(PrintWriter out) {
+    out.println("      <section class=\"aira-panel\" aria-labelledby=\"inline-form-title\">");
+    out.println("        <h2 class=\"aira-section-title\" id=\"inline-form-title\">Inline form</h2>");
+    out.println("        <p class=\"aira-muted\">Compact filter controls wrap when space is limited, while the organization field grows.</p>");
+    out.println("        <form class=\"aira-form aira-form--inline\" method=\"get\" action=\"#filter-results\">");
+    out.println("          <div class=\"aira-field\"><label for=\"component-status\">Status</label><select class=\"aira-select\" id=\"component-status\" name=\"status\"><option>Active</option><option>Inactive</option></select></div>");
+    out.println("          <div class=\"aira-field aira-field--grow\"><label for=\"component-organization\">Organization</label><input class=\"aira-input\" id=\"component-organization\" name=\"organization\" placeholder=\"Organization name\"></div>");
+    out.println("          <button class=\"aira-button aira-button--secondary\" type=\"submit\">Filter</button>");
+    out.println("        </form>");
+    out.println("      </section>");
   }
 
   private static void renderSearchSuggestionsExample(PrintWriter out) {
@@ -745,12 +758,15 @@ public class DemoServlet extends HttpServlet {
   private static void renderDialogExample(PrintWriter out) {
     out.println("      <section class=\"aira-panel\" aria-labelledby=\"dialog-title\">");
     out.println("        <h2 class=\"aira-section-title\" id=\"dialog-title\">Dialog</h2>");
-    out.println("        <p class=\"aira-muted\">Native dialog surface using shared AIRA tokens.</p>");
+    out.println("        <p class=\"aira-muted\">A form composes directly inside the dialog as a compact stack.</p>");
     out.println("        <button class=\"aira-button aira-button--secondary\" type=\"button\" data-dialog-open=\"component-dialog\">Open dialog</button>");
     out.println("        <dialog class=\"aira-dialog\" id=\"component-dialog\" aria-labelledby=\"component-dialog-title\">");
-    out.println("          <h3 class=\"aira-dialog__title\" id=\"component-dialog-title\">Legal term details</h3>");
-    out.println("          <div class=\"aira-dialog__body\"><p>Use native showModal() and close() behavior for focus handling, Escape-to-close, and top-layer stacking. Applications own the JavaScript that opens the dialog.</p></div>");
-    out.println("          <div class=\"aira-dialog__actions aira-form-actions aira-form-actions--end\"><button type=\"button\" class=\"aira-button aira-button--secondary\" data-dialog-close=\"component-dialog\">Close</button></div>");
+    out.println("          <form class=\"aira-stack aira-stack--compact\" method=\"dialog\">");
+    out.println("            <h3 class=\"aira-dialog__title\" id=\"component-dialog-title\">Add organization</h3>");
+    out.println("            <div class=\"aira-field\"><label for=\"component-dialog-name\">Name</label><input class=\"aira-input\" id=\"component-dialog-name\" name=\"name\" required></div>");
+    out.println("            <div class=\"aira-field\"><label for=\"component-dialog-status\">Status</label><select class=\"aira-select\" id=\"component-dialog-status\" name=\"status\"><option>Active</option><option>Inactive</option></select></div>");
+    out.println("            <div class=\"aira-dialog__actions aira-form-actions aira-form-actions--end\"><button type=\"button\" class=\"aira-button aira-button--ghost\" data-dialog-close=\"component-dialog\">Cancel</button><button type=\"submit\" class=\"aira-button aira-button--primary\">Add</button></div>");
+    out.println("          </form>");
     out.println("        </dialog>");
     out.println("        <script>");
     out.println("          document.querySelectorAll('[data-dialog-open]').forEach(function (button) {");

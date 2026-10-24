@@ -4,6 +4,44 @@
   gap: var(--aira-section-gap);
 }
 
+.aira-form > .aira-button,
+.aira-form > a.aira-button,
+.aira-stack > .aira-button,
+.aira-stack > a.aira-button {
+  justify-self: start;
+}
+
+.aira-form--inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--aira-space-2) var(--aira-space-3);
+}
+
+.aira-form--inline > .aira-field {
+  flex: 0 1 auto;
+}
+
+.aira-form--inline .aira-input,
+.aira-form--inline .aira-select {
+  width: auto;
+  min-width: 10rem;
+  max-width: 100%;
+}
+
+.aira-form--inline > .aira-field--grow {
+  flex: 1 1 16rem;
+}
+
+.aira-form--inline > .aira-field--grow .aira-input,
+.aira-form--inline > .aira-field--grow .aira-select {
+  width: 100%;
+}
+
+.aira-form--narrow {
+  max-width: var(--aira-form-max-width);
+}
+
 .aira-field {
   display: grid;
   gap: var(--aira-space-1);
