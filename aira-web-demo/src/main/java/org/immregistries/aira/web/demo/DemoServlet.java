@@ -378,6 +378,8 @@ public class DemoServlet extends HttpServlet {
       page.writeStart(out);
       out.println("    <div class=\"aira-container--wide aira-stack\">");
       out.println("      <header><h1 class=\"aira-page-title\">Tables</h1><p class=\"aira-page-intro\">Standard table patterns for dense AIRA technical applications. Tables remain semantic, preserve columns, and use horizontal scrolling when content needs more width.</p></header>");
+      renderCompactTable(out);
+      renderBodyRowHeaderTable(out);
       renderTopicsUnderReviewTable(out);
       renderTopicMatrixTable(out);
       renderMessageProcessingTable(out);
@@ -389,6 +391,23 @@ public class DemoServlet extends HttpServlet {
       out.println("    </div>");
       page.writeEnd(out);
     }
+  }
+
+  private static void renderCompactTable(PrintWriter out) {
+    out.println("      <section class=\"aira-table-panel\" aria-labelledby=\"compact-table-title\">");
+    out.println("        <div class=\"aira-table-panel__header\"><div><h2 class=\"aira-table-panel__title\" id=\"compact-table-title\">Compact participant list</h2><p class=\"aira-table-panel__description\">Sheet-like rows with inline controls.</p></div></div>");
+    out.println("        <div class=\"aira-table-wrap\"><table class=\"aira-table aira-table--compact\"><caption class=\"aira-visually-hidden\">Compact participant list</caption><thead><tr><th scope=\"col\">Included</th><th scope=\"col\">Participant</th><th scope=\"col\">Role</th><th scope=\"col\">Status</th><th scope=\"col\" class=\"aira-table__cell--actions\"><span class=\"aira-visually-hidden\">Actions</span></th></tr></thead><tbody>");
+    out.println("          <tr><td><label class=\"aira-check\"><input type=\"checkbox\" checked><span class=\"aira-visually-hidden\">Include Avery Morgan</span></label></td><th scope=\"row\" class=\"aira-table__cell--primary\">Avery Morgan</th><td><select class=\"aira-select\" aria-label=\"Role for Avery Morgan\"><option>Participant</option><option>Facilitator</option></select></td><td><span class=\"aira-badge aira-badge--success\">Active</span></td><td class=\"aira-table__cell--actions\"><button class=\"aira-button aira-button--secondary\" type=\"button\">Remove</button></td></tr>");
+    out.println("          <tr><td><label class=\"aira-check\"><input type=\"checkbox\" checked><span class=\"aira-visually-hidden\">Include Jordan Lee</span></label></td><th scope=\"row\" class=\"aira-table__cell--primary\">Jordan Lee</th><td><select class=\"aira-select\" aria-label=\"Role for Jordan Lee\"><option>Participant</option><option selected>Facilitator</option></select></td><td><span class=\"aira-badge aira-badge--info\">Invited</span></td><td class=\"aira-table__cell--actions\"><button class=\"aira-button aira-button--secondary\" type=\"button\">Remove</button></td></tr>");
+    out.println("        </tbody></table></div>");
+    out.println("      </section>");
+  }
+
+  private static void renderBodyRowHeaderTable(PrintWriter out) {
+    out.println("      <section class=\"aira-table-panel\" aria-labelledby=\"row-header-table-title\">");
+    out.println("        <div class=\"aira-table-panel__header\"><div><h2 class=\"aira-table-panel__title\" id=\"row-header-table-title\">Body row headers</h2><p class=\"aira-table-panel__description\">Semantic row headers retain primary emphasis without receiving column-header styling.</p></div></div>");
+    out.println("        <div class=\"aira-table-wrap\"><table class=\"aira-table\"><caption class=\"aira-visually-hidden\">Initiative roster</caption><thead><tr><th scope=\"col\">Person</th><th scope=\"col\">Organization</th><th scope=\"col\">Participation</th></tr></thead><tbody><tr><th scope=\"row\" class=\"aira-table__cell--primary\">Sam Rivera</th><td>Example Registry</td><td>Champion</td></tr><tr><th scope=\"row\" class=\"aira-table__cell--primary\">Taylor Chen</th><td>State Health Department</td><td>Contributor</td></tr></tbody></table></div>");
+    out.println("      </section>");
   }
 
   private static void renderTopicsUnderReviewTable(PrintWriter out) {
@@ -758,12 +777,12 @@ public class DemoServlet extends HttpServlet {
   private static void renderDialogExample(PrintWriter out) {
     out.println("      <section class=\"aira-panel\" aria-labelledby=\"dialog-title\">");
     out.println("        <h2 class=\"aira-section-title\" id=\"dialog-title\">Dialog</h2>");
-    out.println("        <p class=\"aira-muted\">A form composes directly inside the dialog as a compact stack.</p>");
+    out.println("        <p class=\"aira-muted\">A bounded dialog with a working type-ahead whose suggestions can draw past the dialog edge.</p>");
     out.println("        <button class=\"aira-button aira-button--secondary\" type=\"button\" data-dialog-open=\"component-dialog\">Open dialog</button>");
-    out.println("        <dialog class=\"aira-dialog\" id=\"component-dialog\" aria-labelledby=\"component-dialog-title\">");
+    out.println("        <dialog class=\"aira-dialog aira-dialog--popover-visible\" id=\"component-dialog\" aria-labelledby=\"component-dialog-title\">");
     out.println("          <form class=\"aira-stack aira-stack--compact\" method=\"dialog\">");
     out.println("            <h3 class=\"aira-dialog__title\" id=\"component-dialog-title\">Add organization</h3>");
-    out.println("            <div class=\"aira-field\"><label for=\"component-dialog-name\">Name</label><input class=\"aira-input\" id=\"component-dialog-name\" name=\"name\" required></div>");
+    out.println("            <div class=\"aira-field aira-dialog-search\"><label for=\"component-dialog-name\">Organization</label><input class=\"aira-input\" id=\"component-dialog-name\" name=\"name\" role=\"combobox\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-controls=\"component-dialog-listbox\" autocomplete=\"off\" required><div class=\"aira-search-popover\" id=\"component-dialog-popover\" hidden><div class=\"aira-search-listbox\" id=\"component-dialog-listbox\" role=\"listbox\"><button class=\"aira-search-option\" type=\"button\" role=\"option\" data-dialog-option=\"American Immunization Registry Association\"><span class=\"aira-search-option__title\">American Immunization Registry Association</span><span class=\"aira-search-option__meta\">National partner</span></button><button class=\"aira-search-option\" type=\"button\" role=\"option\" data-dialog-option=\"Example State Registry\"><span class=\"aira-search-option__title\">Example State Registry</span><span class=\"aira-search-option__meta\">Immunization program</span></button><button class=\"aira-search-option\" type=\"button\" role=\"option\" data-dialog-option=\"Metro Public Health\"><span class=\"aira-search-option__title\">Metro Public Health</span><span class=\"aira-search-option__meta\">Local health department</span></button></div></div></div>");
     out.println("            <div class=\"aira-field\"><label for=\"component-dialog-status\">Status</label><select class=\"aira-select\" id=\"component-dialog-status\" name=\"status\"><option>Active</option><option>Inactive</option></select></div>");
     out.println("            <div class=\"aira-dialog__actions aira-form-actions aira-form-actions--end\"><button type=\"button\" class=\"aira-button aira-button--ghost\" data-dialog-close=\"component-dialog\">Cancel</button><button type=\"submit\" class=\"aira-button aira-button--primary\">Add</button></div>");
     out.println("          </form>");
@@ -781,6 +800,16 @@ public class DemoServlet extends HttpServlet {
     out.println("              if (dialog) { dialog.close(); }");
     out.println("            });");
     out.println("          });");
+    out.println("          (function () {");
+    out.println("            var input = document.getElementById('component-dialog-name');");
+    out.println("            var popover = document.getElementById('component-dialog-popover');");
+    out.println("            var options = Array.prototype.slice.call(document.querySelectorAll('[data-dialog-option]'));");
+    out.println("            function updateSuggestions() { var query = input.value.trim().toLowerCase(); var visible = 0; options.forEach(function (option) { var match = !query || option.getAttribute('data-dialog-option').toLowerCase().indexOf(query) !== -1; option.hidden = !match; if (match) { visible += 1; } }); popover.hidden = visible === 0; input.setAttribute('aria-expanded', visible === 0 ? 'false' : 'true'); }");
+    out.println("            input.addEventListener('focus', updateSuggestions);");
+    out.println("            input.addEventListener('input', updateSuggestions);");
+    out.println("            input.addEventListener('keydown', function (event) { if (event.key === 'Escape') { popover.hidden = true; input.setAttribute('aria-expanded', 'false'); } });");
+    out.println("            options.forEach(function (option) { option.addEventListener('click', function () { input.value = option.getAttribute('data-dialog-option'); popover.hidden = true; input.setAttribute('aria-expanded', 'false'); input.focus(); }); });");
+    out.println("          }());");
     out.println("        </script>");
     out.println("      </section>");
   }

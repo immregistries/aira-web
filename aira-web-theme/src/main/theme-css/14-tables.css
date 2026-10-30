@@ -101,7 +101,15 @@
   vertical-align: top;
 }
 
-.aira-table tbody tr:last-child td {
+.aira-table tbody th {
+  border-bottom: 1px solid var(--aira-border-subtle);
+  background: transparent;
+  vertical-align: top;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.aira-table tbody tr:last-child > :is(th, td) {
   border-bottom: 0;
 }
 
@@ -152,14 +160,41 @@
   white-space: normal;
 }
 
-.aira-table--brand-header th {
+.aira-table--compact > :is(thead, tbody) > tr > :is(th, td) {
+  padding: var(--aira-space-1) var(--aira-space-2);
+  vertical-align: middle;
+}
+
+.aira-table--compact :is(.aira-input, .aira-select, .aira-button) {
+  min-height: var(--aira-control-height-small);
+  padding-top: var(--aira-space-1);
+  padding-bottom: var(--aira-space-1);
+  font-size: 0.8125rem;
+}
+
+.aira-table--compact .aira-badge {
+  min-height: var(--aira-space-6);
+  padding: 0 var(--aira-space-2);
+  font-size: 0.75rem;
+}
+
+.aira-table--compact :is(.aira-check, .aira-radio) {
+  min-height: 0;
+  align-items: center;
+}
+
+.aira-table--compact :is(.aira-check, .aira-radio) input {
+  margin-top: 0;
+}
+
+.aira-table--brand-header thead th {
   background: var(--aira-navy);
   color: var(--aira-white);
   border-bottom-color: var(--aira-navy);
 }
 
-.aira-table--brand-header th a,
-.aira-table--brand-header th button {
+.aira-table--brand-header thead th a,
+.aira-table--brand-header thead th button {
   color: inherit;
 }
 
