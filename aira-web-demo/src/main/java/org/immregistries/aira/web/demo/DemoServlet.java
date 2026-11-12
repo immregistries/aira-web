@@ -730,12 +730,40 @@ public class DemoServlet extends HttpServlet {
       renderDialogExample(out);
       renderManagementForm(out, request.getContextPath());
       out.println("      <section class=\"aira-alert aira-alert--info\"><p class=\"aira-alert__title\">Information alert</p><p>Alerts use pale semantic surfaces and a strong left border.</p></section>");
+      renderToastExample(out);
       renderFeaturedCards(out);
       renderTopicChoices(out);
       renderMeetings(out);
       out.println("    </div>");
       page.writeEnd(out);
     }
+  }
+
+  private static void renderToastExample(PrintWriter out) {
+    out.println("      <section class=\"aira-panel\" aria-labelledby=\"toast-title\">");
+    out.println("        <h2 class=\"aira-section-title\" id=\"toast-title\">Toast notification</h2>");
+    out.println("        <p class=\"aira-muted\">A brief page-level confirmation with application-owned timing and dismissal.</p>");
+    out.println("        <button class=\"aira-button aira-button--secondary\" id=\"component-toast-show\" type=\"button\">Show confirmation</button>");
+    out.println("      </section>");
+    out.println("      <div class=\"aira-toast-region\" role=\"status\" aria-live=\"polite\" aria-atomic=\"false\">");
+    out.println("        <div class=\"aira-toast aira-toast--success\" id=\"component-toast\" hidden><p class=\"aira-toast__message\">Your changes were saved.</p><button class=\"aira-toast__dismiss\" type=\"button\" aria-label=\"Dismiss notice\">&times;</button></div>");
+    out.println("      </div>");
+    out.println("      <script>");
+    out.println("        (function () {");
+    out.println("          var toast = document.getElementById('component-toast');");
+    out.println("          var show = document.getElementById('component-toast-show');");
+    out.println("          var dismiss = toast.querySelector('.aira-toast__dismiss');");
+    out.println("          var timer;");
+    out.println("          function stopTimer() { window.clearTimeout(timer); }");
+    out.println("          function startTimer() { stopTimer(); timer = window.setTimeout(function () { toast.hidden = true; }, 45000); }");
+    out.println("          show.addEventListener('click', function () { toast.hidden = false; startTimer(); });");
+    out.println("          dismiss.addEventListener('click', function () { stopTimer(); toast.hidden = true; show.focus(); });");
+    out.println("          toast.addEventListener('mouseenter', stopTimer);");
+    out.println("          toast.addEventListener('mouseleave', startTimer);");
+    out.println("          toast.addEventListener('focusin', stopTimer);");
+    out.println("          toast.addEventListener('focusout', function (event) { if (!toast.contains(event.relatedTarget)) { startTimer(); } });");
+    out.println("        }());");
+    out.println("      </script>");
   }
 
   private static void renderInlineFormExample(PrintWriter out) {

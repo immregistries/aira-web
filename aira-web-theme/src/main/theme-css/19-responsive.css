@@ -116,6 +116,13 @@
 }
 
 @media (max-width: 36rem) {
+  .aira-toast-region {
+    right: 50%;
+    bottom: var(--aira-space-4);
+    width: calc(100vw - 2 * var(--aira-space-4));
+    transform: translateX(50%);
+  }
+
   .aira-choice-row,
   .aira-outcome-row,
   .aira-meeting-row,

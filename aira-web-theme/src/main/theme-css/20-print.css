@@ -4,7 +4,8 @@
   .aira-global-header,
   .aira-context-header,
   .aira-sticky-actions,
-  .aira-right-rail {
+  .aira-right-rail,
+  .aira-toast-region {
     display: none !important;
   }
 

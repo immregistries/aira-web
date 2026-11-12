@@ -106,7 +106,7 @@ The shared CSS includes:
 - Topic-page primitives: topic headers, metadata chips, status cards, figures, outcomes, compact meeting rows, relationship rows, resources, recently viewed entries, and topic detail strips.
 - Tables with panels, semantic accent-panel variants, light default headers, optional branded headers, sortable-heading styles, sticky headers, empty states, overflow wrappers, and compact density.
 - Native dialog surface styling for bounded modal prompts using the HTML `<dialog>` element.
-- Alerts, management layout helpers, footer, and small utilities.
+- Alerts, toast notifications, management layout helpers, footer, and small utilities.
 
 The Java component layer intentionally remains small. It renders the shared shell and leaves page-specific content to the servlet.
 
