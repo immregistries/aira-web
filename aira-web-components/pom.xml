@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.immregistries</groupId>
     <artifactId>aira-web</artifactId>
-    <version>0.1.15</version>
+    <version>0.1.16</version>
   </parent>
 
   <artifactId>aira-web-components</artifactId>
@@ -27,4 +27,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <!-- Stamps ${project.version} into aira-web-version.properties (see AiraWebVersion). -->
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
 </project>

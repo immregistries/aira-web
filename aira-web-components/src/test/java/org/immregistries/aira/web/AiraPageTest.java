@@ -26,6 +26,33 @@ class AiraPageTest {
   }
 
   @Test
+  void sharedStylesheetUrlCarriesTheAiraWebReleaseVersion() {
+    String version = AiraWebVersion.get();
+    assertFalse(version.isBlank());
+    assertFalse("dev".equals(version), "aira-web-version.properties should be filtered by Maven");
+
+    String html = render(pageBuilder().build());
+
+    assertTrue(html.contains("href=\"" + AiraDefaults.STYLESHEET_PATH + "?v=" + version + "\""));
+  }
+
+  @Test
+  void localStylesheetUrlsCarryTheApplicationVersion() {
+    String html = render(AiraPage.builder()
+        .applicationName("Hub")
+        .applicationVersion("1.2.3 beta")
+        .documentTitle("Versioned")
+        .addLocalStylesheet("/css/app.css")
+        .addLocalStylesheet("/css/theme.css?mode=dark")
+        .addLocalStylesheet("https://cdn.example.org/lib.css")
+        .build());
+
+    assertTrue(html.contains("href=\"/css/app.css?v=1.2.3+beta\""));
+    assertTrue(html.contains("href=\"/css/theme.css?mode=dark&amp;v=1.2.3+beta\""));
+    assertTrue(html.contains("href=\"https://cdn.example.org/lib.css\""));
+  }
+
+  @Test
   void emptyContextPathCreatesCorrectUrls() {
     String html = render(pageBuilder()
         .contextPath("")
@@ -33,8 +60,8 @@ class AiraPageTest {
         .context("Workspace", List.of(new AiraNavigationItem("Home", "/", true)))
         .build());
 
-    assertTrue(html.contains("href=\"" + AiraDefaults.STYLESHEET_PATH + "\""));
-    assertTrue(html.contains("href=\"/css/application.css\""));
+    assertTrue(html.contains("href=\"" + AiraDefaults.STYLESHEET_PATH + "?v=" + AiraWebVersion.get() + "\""));
+    assertTrue(html.contains("href=\"/css/application.css?v=test\""));
     assertTrue(html.contains("href=\"/\" aria-current=\"page\""));
   }
 
@@ -46,8 +73,8 @@ class AiraPageTest {
         .context("Workspace", List.of(new AiraNavigationItem("Home", "/", true)))
         .build());
 
-    assertTrue(html.contains("href=\"/aira-web-demo" + AiraDefaults.STYLESHEET_PATH + "\""));
-    assertTrue(html.contains("href=\"/aira-web-demo/css/application.css\""));
+    assertTrue(html.contains("href=\"/aira-web-demo" + AiraDefaults.STYLESHEET_PATH + "?v=" + AiraWebVersion.get() + "\""));
+    assertTrue(html.contains("href=\"/aira-web-demo/css/application.css?v=test\""));
     assertTrue(html.contains("href=\"/aira-web-demo/\" aria-current=\"page\""));
   }
 
@@ -193,7 +220,7 @@ class AiraPageTest {
         .search(new AiraSearchConfig("/search?x=\"", "q\"bad", "Search", "quoted \" text"))
         .build());
 
-    assertTrue(html.contains("href=\"/css/app&quot;bad.css\""));
+    assertTrue(html.contains("href=\"/css/app&quot;bad.css?v=test\""));
     assertTrue(html.contains("href=\"/docs?x=&quot;&lt;\""));
     assertTrue(html.contains("src=\"/images/logo&quot;.svg\""));
     assertTrue(html.contains("alt=\"AIRA &quot;Logo&quot;\""));

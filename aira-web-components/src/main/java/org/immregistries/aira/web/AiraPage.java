@@ -1,6 +1,8 @@
 package org.immregistries.aira.web;
 
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -73,9 +75,11 @@ public final class AiraPage {
     writer.println("  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
     writer.println("  <title>" + HtmlEscaper.escapeText(documentTitle) + "</title>");
     writer.println("  <link rel=\"stylesheet\" href=\""
-        + HtmlEscaper.escapeAttribute(resolvePath(AiraDefaults.STYLESHEET_PATH)) + "\">");
+        + HtmlEscaper.escapeAttribute(versionedStylesheetPath(AiraDefaults.STYLESHEET_PATH, AiraWebVersion.get()))
+        + "\">");
     for (String stylesheet : localStylesheets) {
-      writer.println("  <link rel=\"stylesheet\" href=\"" + HtmlEscaper.escapeAttribute(resolvePath(stylesheet)) + "\">");
+      writer.println("  <link rel=\"stylesheet\" href=\""
+          + HtmlEscaper.escapeAttribute(versionedStylesheetPath(stylesheet, applicationVersion)) + "\">");
     }
     writer.println("</head>");
     writer.println("<body>");
@@ -227,6 +231,19 @@ public final class AiraPage {
         + HtmlEscaper.escapeAttribute(footerConfig.termsOfUseUrl())
         + "\">Terms and Conditions of Use</a></p>");
     writer.println("  </footer>");
+  }
+
+  /**
+   * Resolves a same-origin stylesheet path and appends a {@code v} query parameter so a new release
+   * gets a new URL and browsers do not keep using a cached copy. Absolute URLs are left unchanged.
+   */
+  private String versionedStylesheetPath(String path, String version) {
+    String resolved = resolvePath(path);
+    if (resolved.startsWith("http://") || resolved.startsWith("https://")) {
+      return resolved;
+    }
+    return resolved + (resolved.contains("?") ? "&" : "?") + "v="
+        + URLEncoder.encode(version, StandardCharsets.UTF_8);
   }
 
   private String resolvePath(String path) {
