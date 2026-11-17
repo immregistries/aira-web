@@ -731,6 +731,7 @@ public class DemoServlet extends HttpServlet {
       renderManagementForm(out, request.getContextPath());
       out.println("      <section class=\"aira-alert aira-alert--info\"><p class=\"aira-alert__title\">Information alert</p><p>Alerts use pale semantic surfaces and a strong left border.</p></section>");
       renderToastExample(out);
+      renderCodeBlockExample(out);
       renderFeaturedCards(out);
       renderTopicChoices(out);
       renderMeetings(out);
@@ -764,6 +765,28 @@ public class DemoServlet extends HttpServlet {
     out.println("          toast.addEventListener('focusout', function (event) { if (!toast.contains(event.relatedTarget)) { startTimer(); } });");
     out.println("        }());");
     out.println("      </script>");
+  }
+
+  private static void renderCodeBlockExample(PrintWriter out) {
+    String json = "{\n"
+        + "  \"guide\": \"immunization-data-quality\",\n"
+        + "  \"status\": \"built\",\n"
+        + "  \"source\": \"https://example.org/guides/immunization-data-quality/releases/2026-11/source-bundle-with-a-deliberately-long-path.json\",\n"
+        + "  \"pages\": [\n"
+        + "    { \"id\": \"overview\", \"title\": \"Overview\" },\n"
+        + "    { \"id\": \"measures\", \"title\": \"Measures\" }\n"
+        + "  ]\n"
+        + "}";
+    String escaped = escapeHtml(json);
+    out.println("      <section class=\"aira-section-card\" aria-labelledby=\"code-block-title\">");
+    out.println("        <div class=\"aira-section-card__header\"><h2 class=\"aira-section-card__title\" id=\"code-block-title\">Code block</h2></div>");
+    out.println("        <div class=\"aira-section-card__body aira-stack\">");
+    out.println("          <p class=\"aira-muted\">Default: long lines scroll inside the block.</p>");
+    out.println("          <pre class=\"aira-code-block\" tabindex=\"0\" aria-label=\"Build manifest JSON\"><code>" + escaped + "</code></pre>");
+    out.println("          <p class=\"aira-muted\">With <code>aira-code-block--wrap</code>: long lines wrap.</p>");
+    out.println("          <pre class=\"aira-code-block aira-code-block--wrap\" tabindex=\"0\" aria-label=\"Build manifest JSON, wrapped\"><code>" + escaped + "</code></pre>");
+    out.println("        </div>");
+    out.println("      </section>");
   }
 
   private static void renderInlineFormExample(PrintWriter out) {

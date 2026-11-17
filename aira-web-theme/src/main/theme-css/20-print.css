@@ -33,6 +33,13 @@
     overflow: visible;
   }
 
+  .aira-code-block {
+    max-height: none;
+    overflow: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
   .aira-table--sticky-header thead th {
     position: static;
   }
